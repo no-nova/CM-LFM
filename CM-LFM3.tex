@@ -8,6 +8,8 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 \usepackage{microtype}
+\usepackage{float}
+\setlength{\emergencystretch}{2.5em}
 \setlist{nosep,leftmargin=1.2em}
 
 \newtheorem{theorem}{Theorem}
@@ -30,8 +32,10 @@
 
 \title{\vspace{-1.2cm}\textbf{CM-LFM3: Isomorphic Channel Permutation, Cache-Line Aligned\\ Block Sparsity and Spatio-Temporal Token Skipping\\ for Liquid Foundation Models}\\[2mm]
 \large Technical Report 3 of the CM-Series}
-\author{CM-Series systems \& ML research sprint}
-\date{}
+\author{CM-Series systems \& ML research sprint\\
+\small AMD Ryzen 9 9955HX (Zen 5, AVX-512) \textperiodcentered{} NVIDIA RTX 5070 Laptop 8\,GB\\
+\small Testbed report: CM-CNN-Accel (1) $\rightarrow$ CM-Transform (2) $\rightarrow$ CM-LFM3 (3)}
+\date{November 2026}
 
 \begin{document}
 \maketitle
@@ -41,8 +45,8 @@
 We study inference-time sparsification of \textbf{LFM3-VL-2B}, a hybrid vision--language
 Liquid Foundation Model whose language backbone alternates gated depthwise short
 convolutions (\code{LFM3Conv}) with grouped-query attention, and whose vision tower does
-the same at $d{=}1024$. The report has four empirical contributions and one negative
-result, all measured on a single laptop-class testbed (Ryzen~9~9955HX with AVX-512,
+the same at $d{=}1024$. The report has four empirical contributions and two measured negative
+results --- all on a single laptop-class testbed (Ryzen~9~9955HX with AVX-512,
 RTX~5070 Laptop 8\,GB, 44\gbps\ measured DRAM read roof) under a strict
 $<$1.5\,GB anonymous-RSS budget with zero-copy \code{safetensors} streaming.
 (i)~\emph{Dual isomorphism}: we prove that a simultaneous 32-lane block permutation of
@@ -72,10 +76,12 @@ multimodal prefill tokens on static/local-motion/illumination clips for 1.75--1.
 prefill speedup with $\mathrm{KL}\le10^{-6}$, top-1 agreement 1.00 and unchanged VQA
 accuracy, while the $\hat s>0.5$ and global-motion flush rules make scene cuts and camera
 pans \emph{bit-identical} to dense execution ($\max|\Delta| = 0.0$).
-\emph{Negative result}: the permutation itself buys no accuracy --- 20--40\% of the
-pruning gap is attributable to something else entirely (per-token budgets versus a
-layer-global threshold), and norm compensation $\alpha$ is neutral-to-harmful. We report
-this explicitly rather than attribute the gain to $\pi$.
+\emph{Attribution}: the decision rule dominates block ordering --- roughly $8\times$ versus
+$2\times$ on the FFN, and \code{LFM3Conv} gating is lossless once $\alpha{=}1$ --- and norm
+compensation $\alpha$ is annihilated by the sandwich RMSNorm, so we report the ordering's
+much smaller share explicitly rather than attribute the gain to $\pi$. A second measured
+negative result: the standard asymmetric \code{IQ4\_NL} codebook reconstructs these weights
+3--7$\times$ worse than a symmetric 16-level table at the same 18 bytes per 32 weights.
 \end{abstract}
 
 \section{Introduction}
@@ -112,10 +118,11 @@ gates the report with three machine checks (isomorphism, scene-cut exactness, RS
 \item A proof and fp32 verification of \emph{dual} isomorphism for SwiGLU and
 \code{LFM3Conv}, including the rolling-state permutation, with negative controls that
 separate ``permutation is exact'' from ``permutation is harmless''.
-\item A measurement of \emph{which} part of the pruning recipe actually helps: per-token
-energy budgets dominate (worth 20--40\% of $\Delta$PPL), block ordering matters only on
-the FFN and only for co-activation clusters, $\alpha$ rescaling is neutral-to-harmful,
-and 2:4 magnitude pruning remains competitive on the convolutional layers.
+\item A measurement of \emph{which} part of the pruning recipe actually helps: the decision
+rule dominates block ordering ($\sim$8$\times$ versus $\sim$2$\times$ on the FFN), and on
+\code{LFM3Conv} a per-token RMS / output-norm weighted (\wn) block gate at $\alpha{=}1$ is
+\emph{lossless} ($-0.17$ mean $\Delta$PPL over five budgets) while every ordering tested
+sits within $\pm0.3$ --- ordering is not what was broken there, $\alpha{=}1.5$ was.
 \item A fused AVX-512 \code{LFM3Conv} kernel (bit-exact, 1.48$\times$), an
 \code{IQ4\_NL} block-major layout with exact 64-byte-line accounting (parity at
 3.5$\times$ fewer bytes) and Variant-A skipping at 92\% of its Amdahl ceiling.
@@ -127,11 +134,11 @@ scene cuts, plus its measured joint accounting with intra-layer block sparsity.
 \section{Testbed, memory discipline and measurement method}
 
 \subsection{Hardware and software}
-CPU: AMD Ryzen~9~9955HX (Zen~5), 16 physical cores / 32 threads, AVX-512F/BW/VL/DQ/VNNI/BF16/VBMI; L2 $16\times$1\,MiB, L3 64\,MiB. GPU: RTX~5070 Laptop, 8151\,MiB, compute
+CPU: AMD Ryzen~9~9955HX (Zen~5), 16 physical cores / 32 threads, AVX-512F\allowbreak/BW\allowbreak/VL\allowbreak/DQ\allowbreak/VNNI\allowbreak/BF16\allowbreak/VBMI; L2 $16\times$1\,MiB, L3 64\,MiB. GPU: RTX~5070 Laptop, 8151\,MiB, compute
 capability 12.0. Host RAM: $\approx$14\,GB total, $\approx$4\,GB free. PyTorch 2.15,
 CUDA 12.8, Triton 3.x, \code{transformers} 5.19.0 (the version the checkpoint was
 exported with; 5.24 renders this model's generation degenerate --- a finding we record
-because it cost an hour to localise). \code{OMP\_WAIT\_POLICY=passive},
+because it cost an hour to localise). \code{OMP\_WAIT\_POLICY\allowbreak=passive},
 \code{OMP\_PLACES=cores}, \code{OMP\_PROC\_BIND=close}, 16 threads for all pinned CPU
 runs.
 
@@ -209,10 +216,10 @@ Header-only parsing of the checkpoint (424 tensors, 1\,918\,181\,888 parameters,
 3\,836\,363\,776 bytes) and of \code{config.json} gives the following.
 
 \begin{table}[h]\centering\small
-\begin{tabular}{lll}
-\toprule
+\begin{tabular}{l|cc}
+\hline
  & language backbone & vision tower \\
-\midrule
+\hline
 hidden $d$ & 2048 & 1024 \\
 FFN $d_{\mathrm{ff}}$ & 7680 & 2560 \\
 layers & 24 & 14 \\
@@ -223,7 +230,7 @@ sliding window & 256 (5 of 11 attn layers) & --- \\
 norms & sandwich RMSNorm, $\varepsilon=10^{-5}$ & RMSNorm \\
 vocab & 128\,000, tied embeddings & --- \\
 patch / merge & --- & $16\times16$, temporal 2, 2$\times$2 merge \\
-\bottomrule
+\hline
 \end{tabular}
 \caption{Topology. Attention layer types are distributed as
 \code{conv,conv,full}, then alternating \code{conv,sliding} / \code{conv,full},
@@ -323,8 +330,9 @@ the only place where permutation-based block sparsity ever had a chance.}
 
 \paragraph{The gating decision follows the schedule, not the paper.} Two consequences we
 exploited: (a) the 13 convolutions are contiguous in the first half of the stack, so a
-conv-specific policy (2:4) and an FFN-specific policy (co-activation blocks) can be
-co-scheduled without per-layer tuning; (b) because $k{=}7$ costs only $7d = 14\,336$
+conv-specific policy (per-token RMS / \wn{} block gating at $\alpha{=}1$) and an
+FFN-specific policy (co-activation blocks with the same RMS rule) can be co-scheduled
+without per-layer tuning; (b) because $k{=}7$ costs only $7d = 14\,336$
 parameters (0.09\% of the layer) the depthwise filter is irrelevant to byte counts but
 dominant to latency at decode --- the opposite of the usual ``prune the big matrix''
 intuition.
@@ -375,7 +383,7 @@ $\odot$ is coordinate-wise, so $h_P = Ph$. Then $W_2P^{\!\top}h_P = W_2P^{\!\top
 
 \begin{corollary}[block form]
 If $P$ permutes \emph{32-lane blocks} ($P = \bigoplus_{b} P_{\pi(b)}$ with each block kept
-contiguous), the identity holds with \$h\$'s channels grouped into $d_{\mathrm{ff}}/32$
+contiguous), the identity holds with $h$'s channels grouped into $d_{\mathrm{ff}}/32$
 blocks, which is exactly the granularity at which a skip decision is made.
 \end{corollary}
 
@@ -550,8 +558,10 @@ the covariance: channels that co-fire inside one token have correlated \(C_{ij}\
 clustered together, so a coact block is an energy-coherent unit; a gram-greedy block
 minimises expected output error for a \emph{given} linear map and is happy to spread
 energy across blocks, so it is energy-neutral. Energy is a necessary condition, not
-sufficient: the conv ablation (\S\ref{sec:abl}) shows coact blocks still lose PPL on
-\code{LFM3Conv}, because the conv stream's error is dominated by cancellation, not mass.
+sufficient, and it is not even the dominant term: with the \rms/\wn{} rule the conv
+ablation (\S\ref{sec:abl}) is lossless for every ordering (mean $\Delta$PPL $-0.17$ to
+$+0.27$), because the conv stream's error turns out to be dominated by scale, not mass ---
+which is what $\alpha{=}1.5$ was corrupting.
 
 \subsection{The seven selection rules, formally}
 Let $e_{t,b}=\|a_{t,32b:32b+32}\|_2^2$ be the squared 32-lane block energy of token $t$'s
@@ -569,8 +579,8 @@ K=\lceil(1-\tau)n_b\rceil,\\
 \text{ours\_pt}:\quad & m_{t,b}=\mathbf{1}\big[e_{t,b}>\mathrm{Quantile}_{\tau}(e_{t,\cdot})\big]
 \quad\text{(analysis only; runtime quantile forbidden)},\\
 \text{CATS/gram}:\quad & \text{top-}K \text{ or } \thetal \text{ in the clustered order},\\
-\text{Wanda 2:4}:\quad & \text{per group of 4 input channels keep the two largest }
-|w_{ij}|\sqrt{\mathbb{E}[a_i^2]},\ \text{others zeroed}.
+\text{Wanda 2:4}:\quad & \text{per 4 input channels keep the 2 largest }
+|w_{ij}|\sqrt{\mathbb{E}[a_i^2]}.
 \end{align}
 Two distinctions carry the result. First, \emph{row-wise} (top-$K$) versus
 \emph{layer-global} ($\thetal$): a single threshold cannot adapt to a token whose activation
@@ -592,13 +602,14 @@ evaluation span starts at token 32\,768, so calibration and evaluation text neve
 Covariance is collected for three FFN layers at a time ($7680^2$ fp32 $\approx$ 236\,MB
 each) and for all 13 convolutions at once ($2048^2$), which keeps the calibration process
 under 900\,MB anonymous RSS --- the same discipline as inference. Thresholds are then the
-$(1-\tau)$ quantiles of 4096 sampled per-token block energies in the permuted order, cached
-as a 5-float vector per layer.
+$\tau$-quantiles (\emph{low} quantiles, so that the coldest blocks are the ones dropped) of
+4096 sampled per-token block energies in the permuted order, cached as a 5-float vector per
+layer.
 
 
 \begin{figure}[h]\centering
 \includegraphics[width=0.95\textwidth]{figs/fig_energy.pdf}
-\caption{Dropped-energy fraction at a fixed top-$K$ budget, per layer type: co-activation
+\caption{Retained-energy fraction at a fixed top-$K$ budget, per layer type: co-activation
 clustering is 3--4$\times$ better at retaining energy than the raw channel order, and
 gram-coupling is energy-neutral. This diagnostic was run \emph{before} the PPL sweep and
 correctly predicted the ordering comparison --- but not its size: \S\ref{sec:abl} shows the
@@ -641,7 +652,8 @@ which is consistent with the errors being independent across layer types.}
 \begin{figure}[h]\centering
 \includegraphics[width=0.49\textwidth]{figs/fig_r3_ffn.pdf}
 \includegraphics[width=0.49\textwidth]{figs/fig_r3_conv.pdf}
-\caption{The same numbers on a log axis. On the FFN the 6$\times$ separation at
+\caption{The same numbers on a symmetric-log axis (linear inside $\pm0.1$), so cells that
+improve PPL plot below the zero line. On the FFN the 8$\times$ separation at
 $\tau{=}0.5$ is between decision rules, not orderings; on the convolution every
 per-token-RMS rule is within $\pm0.3$ of zero across the whole range.}
 \end{figure}
@@ -788,9 +800,9 @@ dropped. Two bugs lived in the first implementation. (i) Energy was accumulated 
 whole sequence, so a $T{=}64$-calibrated threshold was $\approx$220$\times$ too large at
 $T{=}1$ (mean block energy $6.1\times10^{-5}$ versus $2.8\times10^{-7}$, the latter with a
 cold depthwise-conv state) and masked \emph{every} block; those rows are marked
-\textit{deg.}\ and their speedup is reported as null. (ii) An early version used the
-$(\tau)$-quantile instead of the $(1-\tau)$-quantile, which inverted the rule and let the
-hottest blocks be dropped first. With RMS-per-token energy and the low quantile, $\thetal$
+\textit{deg.}\ and their speedup is reported as null. (ii) An early version thresholded at the
+$(1-\tau)$-quantile while still keeping $E>\thetal$, which is the complement of the intended
+$\tau$-quantile (\emph{low}-quantile) rule: it dropped the hottest blocks first. With RMS-per-token energy and the low quantile, $\thetal$
 transfers across shapes without recalibration: the active fraction at $T{=}1$, $T{=}16$ and
 $T{=}64$ is 0.500, 0.502 and 0.500 at $\tau{=}0.5$ (\code{phase3\_kernels2\_sym.csv},
 column \code{active}), and $T{=}1$ decode is no longer degenerate.
@@ -869,14 +881,14 @@ projection --- a pure-Python timing artifact --- so the ablation was used instea
 \begin{table}[h]\centering\small
 \begin{tabular}{lrrrr}
 \toprule
-component & dense (ms/token) & share & after \code{IQ4\_NL} + skip & ratio \\
+component & dense (ms/tok) & share & IQ4 + skip & ratio \\
 \midrule
 24$\times$ SwiGLU FFN & 73.11 & 69.6\% & 18.87 & 0.387 \\
-13$\times$ \code{LFM3Conv} (in+out) & 18.53 & 17.6\% & 2.15 & 0.246 \\
+13$\times$ conv (in+out) & 18.53 & 17.6\% & 2.15 & 0.246 \\
 11$\times$ GQA ($q/k/v/o$) & 12.78 & 12.2\% & 2.98 & 0.465 \\
 \code{lm\_head} & 14.44 & 13.7\% & 6.58 & 0.453 \\
-non-GEMM residue (norms, RoPE, softmax, & & & & \\
-\quad depthwise conv, cache update, dispatch) & 1.12 & 1.1\% & 1.12 & 1.00 \\
+non-GEMM (norm, RoPE, softmax, & & & & \\
+\quad dwconv, cache, dispatch) & 1.12 & 1.1\% & 1.12 & 1.00 \\
 \midrule
 total & \textbf{105.07} & & \textbf{31.70} & \textbf{3.31$\times$} \\
 \bottomrule
@@ -900,7 +912,7 @@ is therefore \textbf{2.3--3.3$\times$ end-to-end CPU decode}, and the residual g
 $\approx$21\,ms/token of GEMM, i.e.\ 3.3--3.6$\times$, and that is the next engineering
 step rather than a measured result.
 
-\subsection{The mandated codebook is wrong for these weights}
+\subsection{The mandated codebook is wrong for these weights}\label{sec:code}
 Reconstructing with the llama.cpp \code{kvalues\_iq4nl} table and the $d{=}\mathrm{amax}/127$
 convention produces rel $L_2$ 0.2218 on \wtwo{} and 0.3272 on a full FFN layer, versus
 0.098 / 0.045 for a symmetric 16-level table in the same 18-byte block. The reason is
@@ -942,13 +954,16 @@ with the video path is capped by the vision tower, not by these GEMV kernels
 (\S\ref{sec:joint}).
 
 \subsection{4.5-bit \code{IQ4\_NL} in cache-line-aligned block-major layout}
-\Wout{} (2048$\times$2048) is quantised with the llama.cpp \code{IQ4\_NL} codebook
-the 16-entry codebook
+\Wout{} (2048$\times$2048) is quantised, for the purpose of this comparison, with the llama.cpp default
+\emph{asymmetric} codebook --- the 16-entry codebook
 \begin{equation}
 K=\{-127,-104,-83,-65,-45,-28,-12,1,\;13,23,33,41,49,56,62,66\}
 \end{equation}
 and one fp16 block scale
-(amax/127) per 32 weights, giving 18 bytes per 32 weights (4.5\,bit). The block-major
+(amax/127) per 32 weights, giving 18 bytes per 32 weights (4.5\,bit). This asymmetric table
+is \emph{not} what we deploy: \S\ref{sec:code} shows it reconstructs these weights 3--7$\times$
+worse, and every latency number in this section and in \S\ref{sec:ledger} uses the
+symmetric 16-level table validated there, in the same 18-byte block. The block-major
 layout is \code{[block][out][18B]}, so one 32-lane slab is
 $2048\times18 = 36\,864$\,B $= \mathbf{576}$ cache lines \emph{exactly}. Consequences:
 \begin{itemize}
@@ -1141,11 +1156,13 @@ on 16 cores, no accuracy risk. (2) Block-major \code{IQ4\_NL} for \Wout: same la
 bf16 with 3.5$\times$ fewer bytes, which converts directly into batch capacity on a card
 whose decode is weight-bound. (3) Five-stage video token skipping with the global-motion
 gate: 1.75--1.84$\times$ prefill on skippable clips with KL $10^{-6}$ and exact fallback.
-(4) 2:4 pruning on \code{LFM3Conv} layers only, co-activation blocks on FFN layers only.
+(4) per-token RMS / output-norm weighted (\wn) block gating at $\alpha{=}1$ on
+\code{LFM3Conv} layers (lossless, $-0.13$ at $\tau{=}0.5$) and co-activation blocks with
+the same rule on FFN layers ($+2.49$ at $\tau{=}0.5$).
 
 \paragraph{Do not ship.} (a) A \emph{layer-global} threshold with a summed ($L_2$) block
-energy: it is the single most damaging choice in the study, costing 6$\times$ the FFN
-penalty of a per-token RMS rule at $\tau{=}0.5$. (b) A prefill-calibrated threshold at
+energy: it is the single most damaging choice in the study, costing 8.4$\times$ the FFN
+penalty of a per-token RMS rule at $\tau{=}0.5$ ($+20.81$ versus $+2.49$). (b) A prefill-calibrated threshold at
 decode: it drops everything. (c) $\alpha$ norm compensation: cancelled by the sandwich
 RMSNorm on the FFN and actively harmful on the conv layer. (d) Any conclusion validated on
 raw-text perplexity: the protocol reverses the sign of the effect. (e) The mandated
@@ -1165,7 +1182,7 @@ accounting).
 \section{Verification gate}
 \code{scripts/verify\_all.py} checks four properties on the real checkpoint and the
 recorded artifacts, and gates this report on all four (exit status non-zero otherwise): the
-two $	au{=}0$ isomorphisms with their controls, the scene-cut guarantee, and the
+two $\tau{=}0$ isomorphisms with their controls, the scene-cut guarantee, and the
 \emph{retained-energy invariant} $\rho(\tau)>1-\tau$ for every (family, block order,
 decision rule, budget) cell of \S\ref{sec:rms}'s audit --- the assertion that makes the
 ``95\% of the energy deleted'' misreading impossible to ship.
@@ -1339,7 +1356,7 @@ the sandwich RMSNorm.
 \appendix
 \section{Reproduction}
 \begin{sloppypar}
-\begin{itemize}
+\begin{itemize}\raggedright
 \item Hash and freeze weights: \code{artifacts/checksums.sha256} (model
 \code{a9bb8b1c\ldots}, 3\,836\,417\,920\,B), \code{chmod 444}.
 \item Anatomy: \code{python scripts/arch\_anatomy.py} and \code{scripts/phase1\_arch\_report.py}
@@ -1350,10 +1367,13 @@ scripts/bw\_probe.cpp -o bw} $\rightarrow$ \code{results/phase1\_bw.txt}.
 \code{scripts/phase1\_vqa.py}. CPU baselines: \code{scripts/phase1\_cpu.py},
 \code{scripts/phase1\_cpu\_cold.py} (zero-copy mmap loader documented in \S2.3).
 \item Permutation calibration and ablation: \code{scripts/phase2\_calibrate.py},
-\code{scripts/phase2\_eval.py} $\rightarrow$ \code{results/phase2\_ablation.json},
-\code{results/PHASE2\_REPORT.md}; isomorphism \code{scripts/phase2\_isomorphism*.py}.
-\item Kernels: \code{scripts/phase3\_dump.py}, \code{src/p3\_conv\_kernel.cpp},
-\code{scripts/phase3\_run.py} $\rightarrow$ \code{results/phase3\_kernels.md}.
+\code{scripts/phase2\_r3.py} $\rightarrow$ \code{results/phase2\_r3.json} (source of all
+R3 tables); audit \code{scripts/phase2\_energy\_audit.py}; $\alpha$ probe
+\code{scripts/phase2\_alpha\_rmsnorm.py}; isomorphism \code{scripts/phase2\_isomorphism*.py}.
+\item Kernels: \code{scripts/phase3\_dump.py}, \code{scripts/phase3\_dump2.py} (real
+layer-0 tensors and activations), \code{src/p3\_kernels.cpp} (FFN and conv, block-major
+and row-major), \code{src/p3\_gqa.cpp} (GQA and \code{lm\_head}), \code{scripts/phase3\_triton.py}
+(GPU), \code{scripts/phase3\_breakdown.py} (decode ledger).
 \item Video: \code{scripts/phase4\_calibrate.py}, \code{scripts/phase4\_video.py}
 $\rightarrow$ \code{results/phase4\_video.json}.
 \item Gate: \code{python scripts/verify\_all.py} (must print \code{all\_pass True}).
@@ -1363,7 +1383,7 @@ OMP\_PLACES=cores OMP\_PROC\_BIND=close}.
 \end{sloppypar}
 
 \section{Detailed Phase-1 measurements}
-\begin{table}[h]\centering\small
+\begin{table}[H]\centering\small
 \begin{tabular}{lrrrr}
 \toprule
 protocol & PPL & bits/tok & tokens & note \\
@@ -1378,7 +1398,7 @@ P3 ablation span [40960,47104) & 36.04 & 5.415 & 5\,472 & dense reference \\
 NLL 7.64 (pos 0--31), 5.49 (32--255), 4.57 (256--511).}
 \end{table}
 
-\begin{table}[h]\centering\small
+\begin{table}[H]\centering\small
 \begin{tabular}{lrrr}
 \toprule
 probe & dense & skipped ($P_2$) & GT \\
@@ -1397,14 +1417,20 @@ argument rests on the exact-fallback property, not on the accuracy table.}
 \end{table}
 
 \section{Artifact inventory}
-\begin{sloppypar}
-\code{results/}: \code{PHASE1\_REPORT.md}, \code{PHASE2\_REPORT.md},
-\code{PHASE3\_REPORT.md}, \code{PHASE4\_REPORT.md}, \code{phase1\_\{latency,ops,ppl,
-numeric,vqa,cpu,cpu\_cold,bw\}.*}, \code{phase2\_\{calibration,cov,ablation,alpha,
-isomorphism*,law,energy\_diag,conv\_variants\}.*}, \code{phase3\_kernels.*},
-\code{phase4\_\{calib,video\}.json}, \code{verify\_all.json}, \code{p1\_frames/}.
-\code{scripts/}: 20 scripts, all deterministic given the checkpoint and WikiText-2 test
-split; \code{src/}: the AVX-512 kernel and the STREAM probe.
-\end{sloppypar}
+\begin{itemize}\raggedright
+\item \code{results/PHASE\{1..5\}\_REPORT.md} --- per-phase write-ups, with the R2 and R3
+revision appendices that supersede the earlier tables.
+\item \code{results/phase1\_*.json} --- latency, operator profile, PPL protocols, numeric
+probe, CPU microbenchmarks, cold GEMV, VQA.
+\item \code{results/phase2\_*.json}, \code{phase2\_r3.json} --- covariances and thresholds,
+isomorphism checks, ablation, $\alpha$/\rms{} probes, energy audit.
+\item \code{results/phase3\_kernels2\_\{sym,nl\}.csv}, \code{phase3\_triton.json},
+\code{phase3\_e2e\_r3.json} --- CPU kernel sweep, GPU GEMV, decode ledger.
+\item \code{results/phase4\_\{calib,video\}.json}, \code{verify\_all.json} --- video
+pipeline and the gate.
+\item \code{scripts/} --- 24 scripts, deterministic given the checkpoint and the WikiText-2
+test split; \code{src/} --- the three AVX-512 kernels, the Triton kernel, the sparse
+runtime and the STREAM probe.
+\end{itemize}
 
 \end{document}

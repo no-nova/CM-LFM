@@ -18,12 +18,12 @@ import numpy as np
 ROOT = "/home/user/Downloads/CM-LFM3"
 TAUS = ["0.10", "0.20", "0.30", "0.40", "0.50"]
 LABEL = {
-    "native_topk": "native top-$K$",
-    "native_wn": "native + $\\wn$ (weighted)",
+    "native_topk": "native top-K",
+    "native_wn": "native + WN",
     "cats": "CATS-block",
-    "ours_rms": "ours \\rms ($\\pi_{\\mathrm{coact}}$, per-token RMS)",
-    "ours_wn": "ours \\wn ($\\pi_{\\wn}$, output-norm weighted)",
-    "wanda": "Wanda 2:4 (fixed ratio)",
+    "ours_rms": r"ours RMS ($\pi_{\mathrm{coact}}$)",
+    "ours_wn": r"ours WN ($\pi_{\mathrm{WN}}$)",
+    "wanda": "Wanda 2:4",
 }
 
 
@@ -41,7 +41,8 @@ def main() -> int:
         # bold the best (lowest) dp3 per budget
         best = {i: min(range(len(methods)), key=lambda k: rows[methods[k]][i]["dp3"])
                 for i in range(len(TAUS))}
-        lines = [r"\begin{tabular}{l" + "r" * 7 + "}", r"\toprule",
+        lines = [r"\setlength{\tabcolsep}{4pt}",
+                 r"\begin{tabular}{l" + "r" * 7 + "}", r"\toprule",
                  "method & " + " & ".join(f"$\\tau{{=}}{t}$" for t in TAUS) +
                  r" & mean & mean $\Delta$P2 \\", r"\midrule"]
         for k, m in enumerate(methods):
@@ -65,10 +66,10 @@ def main() -> int:
         fig, ax = plt.subplots(figsize=(5.0, 3.0))
         xs = [float(t) for t in TAUS]
         for m in methods:
-            ys = [max(r["dp3"], 1e-2) for r in rows[m]]
-            ax.plot(xs, ys, marker="o", ms=3, lw=1.3, label=LABEL[m].replace("$", ""))
-        ax.set_yscale("log")
-        ax.axhline(0.0, color="k", lw=0.6, ls=":")
+            ys = [r["dp3"] for r in rows[m]]
+            ax.plot(xs, ys, marker="o", ms=3, lw=1.3, label=LABEL[m])
+        ax.set_yscale("symlog", linthresh=0.1, linscale=0.6)
+        ax.axhline(0.0, color="k", lw=0.8, ls="-")
         ax.set_xlabel(r"block budget $\tau$")
         ax.set_ylabel(r"$\Delta$PPL (chat-conditioned)")
         ax.set_title(("SwiGLU FFN" if mode == "ffn" else r"LFM3Conv") + " gating only")

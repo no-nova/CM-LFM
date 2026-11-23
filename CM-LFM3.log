@@ -337,50 +337,56 @@ LaTeX Info: Redefining \lsstyle on input line 236.
 Package microtype Info: Loading configuration file microtype.cfg.
  (microtype.cfg
 File: microtype.cfg 2022/03/14 v3.0d microtype main configuration file (RS)
-))
-\c@theorem=\count294
-\c@proposition=\count295
-\c@lemma=\count296
-\c@corollary=\count297
-
-(l3backend-xetex.def
+)) (float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count294
+\float@exts=\toks32
+\float@box=\box57
+\@float@everytoks=\toks33
+\@floatcapt=\box58
+)
+\c@theorem=\count295
+\c@proposition=\count296
+\c@lemma=\count297
+\c@corollary=\count298
+ (l3backend-xetex.def
 File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
-\c__kernel_sys_dvipdfmx_version_int=\count298
-\l__color_backend_stack_int=\count299
-\g__color_backend_stack_int=\count300
-\g__graphics_track_int=\count301
-\l__pdf_internal_box=\box57
-\g__pdf_backend_object_int=\count302
-\g__pdf_backend_annotation_int=\count303
-\g__pdf_backend_link_int=\count304
+\c__kernel_sys_dvipdfmx_version_int=\count299
+\l__color_backend_stack_int=\count300
+\g__color_backend_stack_int=\count301
+\g__graphics_track_int=\count302
+\l__pdf_internal_box=\box59
+\g__pdf_backend_object_int=\count303
+\g__pdf_backend_annotation_int=\count304
+\g__pdf_backend_link_int=\count305
 ) (CM-LFM3.aux)
 \openout1 = `CM-LFM3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 3
-6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 4
+0.
  (ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -417,9 +423,10 @@ LaTeX Font Info:    ... okay on input line 36.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 36.
+Package hyperref Info: Link coloring OFF on input line 40.
 (nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (refcount.sty
@@ -427,20 +434,20 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count305
+\c@section@level=\count306
 )
-LaTeX Info: Redefining \ref on input line 36.
-LaTeX Info: Redefining \pageref on input line 36.
-LaTeX Info: Redefining \nameref on input line 36.
+LaTeX Info: Redefining \ref on input line 40.
+LaTeX Info: Redefining \pageref on input line 40.
+LaTeX Info: Redefining \nameref on input line 40.
  (CM-LFM3.out) (CM-LFM3.out)
 \@outlinefile=\write3
 \openout3 = `CM-LFM3.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 36.
-Package microtype Info: Applying patch `item' on input line 36.
-Package microtype Info: Applying patch `toc' on input line 36.
-Package microtype Info: Applying patch `eqnum' on input line 36.
-Package microtype Info: Applying patch `footnote' on input line 36.
+LaTeX Info: Redefining \microtypecontext on input line 40.
+Package microtype Info: Applying patch `item' on input line 40.
+Package microtype Info: Applying patch `toc' on input line 40.
+Package microtype Info: Applying patch `eqnum' on input line 40.
+Package microtype Info: Applying patch `footnote' on input line 40.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -454,14 +461,14 @@ ern Roman (RS)
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
 
  (umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
 
  (umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -476,223 +483,126 @@ Package microtype Info: Loading generic protrusion settings for font family
  [1
 
 ]
-Overfull \hbox (74.88727pt too wide) in paragraph at lines 130--137
-\TU/lmr/m/n/10.95 CPU: AMD Ryzen 9 9955HX (Zen 5), 16 physical cores / 32 threa
-ds, AVX-512F/BW/VL/DQ/VNNI/BF16/VBMI;
- []
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 158.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.82538pt
-(hyperref)                removed on input line 158.
+(hyperref)                removed on input line 165.
 
-[2]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[2] [3]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3]
+[4]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4] [5]
-Overfull \hbox (4.87758pt too wide) in paragraph at lines 371--374
+[5]
+Underfull \hbox (badness 2608) in paragraph at lines 379--382
 []$[]$\TU/lmr/m/n/10.95 , $\OMS/cmsy/m/n/10.95 ^^L$ \TU/lmr/m/n/10.95 and every
- elementwise nonlinearity are equivariant to row permutation: $[]\OT1/cmr/m/n/1
-0.95 (\OML/cmm/m/it/10.95 PW[]x\OT1/cmr/m/n/10.95 ) =
+ elementwise nonlinearity are equivariant to row permutation:
  []
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 382.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 390.
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 382.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 390.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 420.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\tau' on input line 420.
+(hyperref)                removing `math shift' on input line 428.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 420.
+(hyperref)                removing `\tau' on input line 428.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 428.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] [7]
-Overfull \hbox (5.65573pt too wide) detected at line 574
-[]
- []
-
-[8]
+[6] [7] [8]
 File: figs/fig_energy.pdf Graphic file (type pdf)
 <use figs/fig_energy.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(results/tab_r3_ffn.tex)
-Overfull \hbox (20.76294pt too wide) in paragraph at lines 1--625
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(results/tab_r3_conv.tex)
-Overfull \hbox (20.76294pt too wide) in paragraph at lines 1--632
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+ [9] (results/tab_r3_ffn.tex) (results/tab_r3_conv.tex)
 (results/tab_r3_both.tex)
-Overfull \hbox (25.76295pt too wide) in paragraph at lines 1--638
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: figs/fig_r3_ffn.pdf Graphic file (type pdf)
 <use figs/fig_r3_ffn.pdf>
 File: figs/fig_r3_conv.pdf Graphic file (type pdf)
 <use figs/fig_r3_conv.pdf>
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 656.
-[9]
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 668.
+[10]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 682.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 682.
+(hyperref)                removing `math shift' on input line 694.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 682.
+(hyperref)                removing `\alpha' on input line 694.
 
-[10] [11]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 694.
+
+[11]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 744.
- [12] (results/tab_phase3.tex)
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 756.
+ (results/tab_phase3.tex)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 783.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\theta' on input line 783.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 783.
+(hyperref)                removing `math shift' on input line 795.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ell' on input line 783.
+(hyperref)                removing `\theta' on input line 795.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 783.
+(hyperref)                removing `subscript' on input line 795.
 
-[13] (results/tab_phase3_cpu2.tex) [14]
-Overfull \hbox (6.92285pt too wide) in paragraph at lines 870--887
- [][] 
- []
 
-[15] (results/tab_phase3_gpu.tex) [16] [17] [18]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ell' on input line 795.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 795.
+
+[13] (results/tab_phase3_cpu2.tex) [14] [15] (results/tab_phase3_gpu.tex)
+[16] [17] [18]
 File: figs/fig_video.pdf Graphic file (type pdf)
 <use figs/fig_video.pdf>
  [19]
 
 LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 1156.
+(Font)              using `TU/lmr/m/scsl' instead on input line 1173.
 
 [20]
 
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
-(Font)              using `TU/lmr/bx/n' instead on input line 1202.
+(Font)              using `TU/lmr/bx/n' instead on input line 1219.
 
-[21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1347
-[]\TU/lmr/m/n/10.95 Anatomy: \TU/lmtt/m/n/10 python scripts/arch_anatomy.py \TU
-/lmr/m/n/10.95 and \TU/lmtt/m/n/10 scripts/phase1_arch_report.py $\OMS/cmsy/m/n
-/10.95 !$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1347--1349
-[]\TU/lmr/m/n/10.95 Memory roof: \TU/lmtt/m/n/10 g++ -O3 -march=native -mavx512
-f -mavx512bw -fopenmp -std=c++20
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1352--1355
-\OMS/cmsy/m/n/10.95 !$ \TU/lmtt/m/n/10 results/phase2_ablation.json\TU/lmr/m/n/
-10.95 , \TU/lmtt/m/n/10 results/PHASE2_REPORT.md\TU/lmr/m/n/10.95 ; isomorphism
-
- []
-
-
-Underfull \hbox (badness 6510) in paragraph at lines 1355--1357
-[]\TU/lmr/m/n/10.95 Kernels: \TU/lmtt/m/n/10 scripts/phase3_dump.py\TU/lmr/m/n/
-10.95 , \TU/lmtt/m/n/10 src/p3_conv_kernel.cpp\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/
-10 scripts/phase3_run.py $\OMS/cmsy/m/n/10.95 !$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1360--1362
-[]\TU/lmr/m/n/10.95 All CPU runs: \TU/lmtt/m/n/10 OMP_WAIT_POLICY=passive OMP_N
-UM_THREADS=16 OMP_PLACES=cores
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1401--1408
-\TU/lmtt/m/n/10 results/\TU/lmr/m/n/10.95 : \TU/lmtt/m/n/10 PHASE1_REPORT.md\TU
-/lmr/m/n/10.95 , \TU/lmtt/m/n/10 PHASE2_REPORT.md\TU/lmr/m/n/10.95 , \TU/lmtt/m
-/n/10 PHASE3_REPORT.md\TU/lmr/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1401--1408
-\TU/lmtt/m/n/10 PHASE4_REPORT.md\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10 phase1_{lat
-ency,ops,ppl, numeric,vqa,cpu,cpu_cold,bw}.*\TU/lmr/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1401--1408
-\TU/lmtt/m/n/10 phase2_{calibration,cov,ablation,alpha, isomorphism*,law,energy
-_diag,conv_variants}.*\TU/lmr/m/n/10.95 ,
- []
-
-[23] [24] (CM-LFM3.aux)
+[21] [22] [23] [24] (CM-LFM3.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `CM-LFM3.out' has not changed.
 (rerunfilecheck)             Checksum: 1B5FC51E31169C0B5868BD4A6502A056;10971.
  )
-Output written on CM-LFM3.xdv (24 pages, 734972 bytes).
+Output written on CM-LFM3.xdv (24 pages, 749608 bytes).

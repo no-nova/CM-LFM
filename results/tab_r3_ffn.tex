@@ -1,11 +1,12 @@
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrrrrr}
 \toprule
 method & $\tau{=}0.10$ & $\tau{=}0.20$ & $\tau{=}0.30$ & $\tau{=}0.40$ & $\tau{=}0.50$ & mean & mean $\Delta$P2 \\
 \midrule
-native top-$K$ & $+0.80$ & $+2.25$ & $+5.08$ & $+10.88$ & $+20.81$ & $+7.96$ & $+2.25$ \\
-native + $\wn$ (weighted) & $+0.54$ & $+2.31$ & $+5.08$ & $+10.25$ & $+20.92$ & $+7.82$ & $+6.80$ \\
+native top-K & $+0.80$ & $+2.25$ & $+5.08$ & $+10.88$ & $+20.81$ & $+7.96$ & $+2.25$ \\
+native + WN & $+0.54$ & $+2.31$ & $+5.08$ & $+10.25$ & $+20.92$ & $+7.82$ & $+6.80$ \\
 CATS-block & $+0.33$ & $+1.37$ & $+2.88$ & $+5.93$ & $+10.28$ & $+4.16$ & $-5.68$ \\
-ours \rms ($\pi_{\mathrm{coact}}$, per-token RMS) & $\mathbf{-0.07}$ & $+0.10$ & $+0.54$ & $\mathbf{+0.84}$ & $\mathbf{+2.49}$ & $+0.78$ & $-5.57$ \\
-ours \wn ($\pi_{\wn}$, output-norm weighted) & $+0.03$ & $\mathbf{+0.00}$ & $\mathbf{+0.18}$ & $+1.36$ & $+2.98$ & $+0.91$ & $-6.18$ \\
+ours RMS ($\pi_{\mathrm{coact}}$) & $\mathbf{-0.07}$ & $+0.10$ & $+0.54$ & $\mathbf{+0.84}$ & $\mathbf{+2.49}$ & $+0.78$ & $-5.57$ \\
+ours WN ($\pi_{\mathrm{WN}}$) & $+0.03$ & $\mathbf{+0.00}$ & $\mathbf{+0.18}$ & $+1.36$ & $+2.98$ & $+0.91$ & $-6.18$ \\
 \bottomrule
 \end{tabular}
