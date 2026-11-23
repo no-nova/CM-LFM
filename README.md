@@ -44,3 +44,11 @@ Model weights are not part of this repository; `artifacts/checksums.sha256` reco
 SHA-256 of every file used. Calibration tensors (`results/*.pt`), weight dumps
 (`artifacts/p3/`) and upstream dataset/video frames are excluded — they are either large
 binary artifacts or third-party content that is not ours to redistribute.
+
+## License
+
+Released under the **Apache License, Version 2.0** — see [`LICENSE`](LICENSE).
+You may use, modify and redistribute the code, kernels and text under the terms of that
+license (including its patent grant). The LFM3-VL-2B weights are **not** covered by this
+license: they remain under the terms published by Liquid AI, and nothing here is
+redistributed with them.
