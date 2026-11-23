@@ -542,23 +542,23 @@ File: figs/fig_r3_conv.pdf Graphic file (type pdf)
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 668.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 670.
 [10]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 694.
+(hyperref)                removing `math shift' on input line 696.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 694.
+(hyperref)                removing `\alpha' on input line 696.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 694.
+(hyperref)                removing `math shift' on input line 696.
 
 [11]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 756.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 758.
  (results/tab_phase3.tex)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -566,37 +566,43 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 795.
+(hyperref)                removing `math shift' on input line 797.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\theta' on input line 795.
+(hyperref)                removing `\theta' on input line 797.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 795.
+(hyperref)                removing `subscript' on input line 797.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ell' on input line 795.
+(hyperref)                removing `\ell' on input line 797.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 795.
+(hyperref)                removing `math shift' on input line 797.
 
 [13] (results/tab_phase3_cpu2.tex) [14] [15] (results/tab_phase3_gpu.tex)
-[16] [17] [18]
+[16] [17]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: figs/fig_video.pdf Graphic file (type pdf)
 <use figs/fig_video.pdf>
- [19]
+[18] [19]
 
 LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 1173.
+(Font)              using `TU/lmr/m/scsl' instead on input line 1178.
 
 [20]
 
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
-(Font)              using `TU/lmr/bx/n' instead on input line 1219.
+(Font)              using `TU/lmr/bx/n' instead on input line 1224.
 
 [21] [22] [23] [24] (CM-LFM3.aux)
 
@@ -605,4 +611,4 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package rerunfilecheck Info: File `CM-LFM3.out' has not changed.
 (rerunfilecheck)             Checksum: 1B5FC51E31169C0B5868BD4A6502A056;10971.
  )
-Output written on CM-LFM3.xdv (24 pages, 749608 bytes).
+Output written on CM-LFM3.xdv (24 pages, 752404 bytes).

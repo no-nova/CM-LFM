@@ -609,7 +609,8 @@ layer.
 
 \begin{figure}[h]\centering
 \includegraphics[width=0.95\textwidth]{figs/fig_energy.pdf}
-\caption{Retained-energy fraction at a fixed top-$K$ budget, per layer type: co-activation
+\caption{Retained-energy fraction at a fixed top-$K$ budget. \emph{Left:} text FFN.
+\emph{Right:} \code{LFM3Conv}. Co-activation
 clustering is 3--4$\times$ better at retaining energy than the raw channel order, and
 gram-coupling is energy-neutral. This diagnostic was run \emph{before} the PPL sweep and
 correctly predicted the ordering comparison --- but not its size: \S\ref{sec:abl} shows the
@@ -652,7 +653,8 @@ which is consistent with the errors being independent across layer types.}
 \begin{figure}[h]\centering
 \includegraphics[width=0.49\textwidth]{figs/fig_r3_ffn.pdf}
 \includegraphics[width=0.49\textwidth]{figs/fig_r3_conv.pdf}
-\caption{The same numbers on a symmetric-log axis (linear inside $\pm0.1$), so cells that
+\caption{\emph{Left:} SwiGLU FFN gating only. \emph{Right:} \code{LFM3Conv} gating only.
+The same numbers on a symmetric-log axis (linear inside $\pm0.1$), so cells that
 improve PPL plot below the zero line. On the FFN the 8$\times$ separation at
 $\tau{=}0.5$ is between decision rules, not orderings; on the convolution every
 per-token-RMS rule is within $\pm0.3$ of zero across the whole range.}
@@ -833,18 +835,21 @@ bytes, and at $T{=}64$ the layer is FLOP-bound, so 22.12\,MB of traffic versus 9
 buys only 1.14--1.16$\times$ of wall time. (3) Accuracy at $\tau{=}0.5$: rel $L_2$ 0.331
 (FFN, dominated by the dropped mass) and 0.087 (conv).
 
-\paragraph{End-to-end decode.} Combining the measured per-op speedups with the executed
-byte fractions (FFN 59.04\%, conv 11.38\%, GQA 6.03\%, lm\_head/embed 13.67\%, vision
-tower not executed at text decode) gives, on this CPU at 16 threads,
+\paragraph{End-to-end decode, first coverage stage.} Combining the measured per-op
+speedups with the executed byte fractions (FFN 59.04\%, conv 11.38\%, GQA 6.03\%,
+\code{lm\_head}/embed 13.67\%, vision tower not executed at text decode) gives, on this CPU
+at 16 threads, the \emph{partial-coverage} bound (FFN and conv quantised, GQA and
+\code{lm\_head} still bf16), which the next subsection completes:
 \begin{equation}
 t=\underbrace{\frac{0.6552}{2.58}}_{\text{FFN}}+\underbrace{\frac{0.1263}{4.07}}_{\text{conv}}
 +\underbrace{0.0669}_{\text{GQA}}+\underbrace{0.1517}_{\text{lm\_head}}=0.503\;\text{units},
 \quad S_{\text{e2e}}\approx\mathbf{1.99\times},
 \end{equation}
-i.e.\ 142.1\,ms $\rightarrow$ \textbf{71.5\,ms per token}. The post-quantisation DRAM
-floor is 30.9\,ms for 1359\,MB, so the kernels run at 43\% of that floor; the remaining gap
-is the two streams left untouched. Quantising \code{lm\_head} and GQA is the obvious
-next lever, and it is measured in \S\ref{sec:ledger}.
+i.e.\ 142.1\,ms $\rightarrow$ \textbf{71.5\,ms per token} --- a 1.99$\times$ bound that
+covers only 70.4\% of the dense byte mass. The post-quantisation DRAM floor for those two
+families is 30.9\,ms for 1359\,MB, so the kernels run at 43\% of that floor.
+\S\ref{sec:ledger} closes the ledger by quantising the two remaining streams (GQA and
+\code{lm\_head}) and reports the final \textbf{3.31$\times$} composition.
 
 \subsection{GQA and the \code{lm\_head}: closing the decode ledger}\label{sec:ledger}
 Two streams were untouched by the Phase-3 kernel: the eleven GQA blocks ($q/k/v/o$, 220\,MB)

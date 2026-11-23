@@ -63,7 +63,7 @@ def main() -> int:
 
         if mode == "both":
             continue
-        fig, ax = plt.subplots(figsize=(5.0, 3.0))
+        fig, ax = plt.subplots(figsize=(5.0, 2.95))
         xs = [float(t) for t in TAUS]
         for m in methods:
             ys = [r["dp3"] for r in rows[m]]
@@ -72,9 +72,14 @@ def main() -> int:
         ax.axhline(0.0, color="k", lw=0.8, ls="-")
         ax.set_xlabel(r"block budget $\tau$")
         ax.set_ylabel(r"$\Delta$PPL (chat-conditioned)")
-        ax.set_title(("SwiGLU FFN" if mode == "ffn" else r"LFM3Conv") + " gating only")
+        # panel identity lives in the caption: a title here would collide with the
+        # legend that is placed above the axes to keep the curves unobstructed
+
         ax.grid(alpha=0.3, which="both")
-        ax.legend(fontsize=5.5, frameon=False)
+        ax.margins(x=0.03, y=0.18)
+        ax.legend(fontsize=6.0, frameon=False, ncol=2, loc="lower left",
+                  bbox_to_anchor=(0.0, 1.02), borderaxespad=0.0, columnspacing=1.2,
+                  handlelength=1.4)
         fig.tight_layout()
         fig.savefig(f"{ROOT}/figs/fig_r3_{mode}.pdf")
         fig.savefig(f"{ROOT}/figs/fig_r3_{mode}.png", dpi=110)

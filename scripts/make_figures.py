@@ -46,10 +46,11 @@ for ax, fam, title in ((axes[0], "ffn", "text FFN"), (axes[1], "conv", "LFM3Conv
     for order, ls, mk in (("native", "-", "o"), ("gram", "--", "s"), ("coact", ":", "^")):
         ax.plot(taus, [r[f"{order}_thr"] for r in rr], ls=ls, marker=mk, label=order)
     ax.plot(taus, [1.0 - t for t in taus], "k:", lw=1.0, label=r"$1-\tau$ bound")
-    ax.set_title(title, fontsize=9); ax.set_xlabel(r"$\tau$")
+    ax.set_xlabel(r"$\tau$")  # panel identity is named in the caption
     ax.set_ylim(0.75, 1.005)
 axes[0].set_ylabel("retained energy fraction")
-axes[0].legend(fontsize=6.5, frameon=False, loc="lower left")
+axes[0].legend(fontsize=7, frameon=False, ncol=4, loc="lower left",
+               bbox_to_anchor=(0.0, 1.01), borderaxespad=0.0)
 fig.tight_layout(); fig.savefig(f"{F}/fig_energy.pdf"); fig.savefig(f"{F}/fig_energy.png"); plt.close(fig)
 
 # video: tokens and speedup
@@ -61,12 +62,15 @@ axes[0].bar([i + .38 for i in range(len(names))], [v[k]["tokens_skipped"] for k 
             width=.38, label="P2")
 axes[0].set_xticks([i + .19 for i in range(len(names))])
 axes[0].set_xticklabels([k.split("_")[0] for k in names], fontsize=7)
-axes[0].set_ylabel("multimodal prefill tokens"); axes[0].legend(fontsize=7, frameon=False)
+axes[0].set_ylim(0, 272)
+axes[0].set_ylabel("multimodal prefill tokens")
+axes[0].legend(fontsize=7, frameon=False, ncol=2, loc="lower left",
+               bbox_to_anchor=(0.0, 1.02), borderaxespad=0.0)
 axes[1].bar(range(len(names)), [v[k]["prefill_speedup"] for k in names], width=.6, color="#2ca02c")
 axes[1].axhline(1.0, color="k", lw=.8, ls="--")
 axes[1].set_xticks(range(len(names)))
 axes[1].set_xticklabels([k.split("_")[0] for k in names], fontsize=7)
-axes[1].set_ylabel("prefill speedup"); axes[1].set_ylim(0.9, 2.0)
+axes[1].set_ylabel("prefill speedup"); axes[1].set_ylim(0.9, 1.95)
 fig.tight_layout(); fig.savefig(f"{F}/fig_video.pdf"); fig.savefig(f"{F}/fig_video.png"); plt.close(fig)
 
 # kernel scaling
