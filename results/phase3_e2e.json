@@ -1,0 +1,20 @@
+{
+ "s_ffn_T1": 2.584,
+ "s_conv_T1": 4.069,
+ "frac": {
+  "ffn": 0.6551,
+  "conv": 0.1263,
+  "gqa": 0.0669,
+  "emb": 0.1517
+ },
+ "time_units": 0.5032,
+ "speedup": 1.987,
+ "decode_ms_before": 142.11,
+ "decode_ms_projected": 71.51,
+ "roof_ms": 81.44,
+ "share_of_roof_before": 0.573,
+ "bytes_after_MB": 1359.2,
+ "floor_ms_after": 30.89,
+ "share_of_new_floor": 0.432,
+ "note": "bytes-proportional model: t = sum_k f_k * t_dense / s_k over executed weight bytes (ffn 59.04%, conv 11.38%, gqa 6.03%, lm_head+embed 13.67%), measured per-op speedups at T=1/16 threads; vision tower and projector are not executed at text decode and are excluded from the fractions."
+}

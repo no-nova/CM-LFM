@@ -1,0 +1,200 @@
+[mmap] rebuilt rotary buffers: ['model.vision_tower.rotary_pos_emb', 'model.language_model.rotary_emb']; unexpected keys: []
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights:   5%|▌         | 23/424 [00:00<00:01, 225.89it/s]Loading weights:  23%|██▎       | 96/424 [00:00<00:00, 495.45it/s]Loading weights:  40%|████      | 171/424 [00:00<00:00, 608.04it/s]Loading weights:  57%|█████▋    | 241/424 [00:00<00:00, 633.51it/s]Loading weights:  94%|█████████▍| 400/424 [00:00<00:00, 968.05it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 808.97it/s]
+{
+ "env": {
+  "OMP_WAIT_POLICY": "passive",
+  "torch": "2.15.0",
+  "mkl": true
+ },
+ "rss_after_import": {
+  "anon": 315,
+  "file": 208,
+  "rss": 524
+ },
+ "mmap_load_seconds": 1.53,
+ "rss_after_mmap_load": {
+  "anon": 473,
+  "file": 257,
+  "rss": 731
+ },
+ "cpu_prefill_64_ms": 624.1,
+ "rss_after_forward": {
+  "anon": 526,
+  "file": 3096,
+  "rss": 3641
+ },
+ "cpu_vs_gpu": {
+  "hidden_rmse": 0.10452900826931,
+  "max_abs": 1.734375,
+  "rel_l2": 0.039043575525283813,
+  "seq_len": 64,
+  "note": "identical bf16 weights; CPU AVX-512 bf16 vs GPU tensor-core bf16"
+ },
+ "cpu_decode_ms_per_token": 142.11,
+ "rss_after_decode": {
+  "anon": 1074,
+  "file": 3237,
+  "rss": 4398
+ },
+ "rss_end": {
+  "anon": 1594,
+  "file": 432,
+  "rss": 2112
+ }
+}
+mm_bf16_T1_q_proj/o_proj_2048x2048           th= 1    0.0710 ms    118.1 GF    118.1 GB/s  268.5% of 44 GB/s
+mm_bf16_T1_k_proj/v_proj_512x2048            th= 1    0.0221 ms     95.1 GF     95.3 GB/s  216.5% of 44 GB/s
+mm_bf16_T1_ffn.w1/w3_7680x2048               th= 1    0.3971 ms     79.2 GF     79.2 GB/s  180.1% of 44 GB/s
+mm_bf16_T1_ffn.w2_2048x7680                  th= 1    0.3637 ms     86.5 GF     86.5 GB/s  196.7% of 44 GB/s
+mm_bf16_T1_conv.in_proj_6144x2048            th= 1    0.1886 ms    133.4 GF    133.4 GB/s  303.2% of 44 GB/s
+mm_bf16_T1_conv.out_proj_2048x2048           th= 1    0.0644 ms    130.3 GF    130.3 GB/s  296.2% of 44 GB/s
+mm_bf16_T16_q_proj/o_proj_2048x2048          th= 1    0.3761 ms    356.9 GF     22.5 GB/s   51.1% of 44 GB/s
+mm_bf16_T16_k_proj/v_proj_512x2048           th= 1    0.0962 ms    348.7 GF     22.5 GB/s   51.1% of 44 GB/s
+mm_bf16_T16_ffn.w1/w3_7680x2048              th= 1    1.7478 ms    288.0 GF     18.0 GB/s   41.0% of 44 GB/s
+mm_bf16_T16_ffn.w2_2048x7680                 th= 1    1.6601 ms    303.2 GF     19.1 GB/s   43.4% of 44 GB/s
+mm_bf16_T16_conv.in_proj_6144x2048           th= 1    1.1331 ms    355.4 GF     22.3 GB/s   50.6% of 44 GB/s
+mm_bf16_T16_conv.out_proj_2048x2048          th= 1    0.3483 ms    385.4 GF     24.3 GB/s   55.2% of 44 GB/s
+mm_bf16_T64_q_proj/o_proj_2048x2048          th= 1    0.9680 ms    554.6 GF      8.9 GB/s   20.3% of 44 GB/s
+mm_bf16_T64_k_proj/v_proj_512x2048           th= 1    0.2472 ms    543.0 GF      9.5 GB/s   21.7% of 44 GB/s
+mm_bf16_T64_ffn.w1/w3_7680x2048              th= 1    4.4347 ms    454.0 GF      7.2 GB/s   16.3% of 44 GB/s
+mm_bf16_T64_ffn.w2_2048x7680                 th= 1    4.4691 ms    450.5 GF      7.3 GB/s   16.5% of 44 GB/s
+mm_bf16_T64_conv.in_proj_6144x2048           th= 1    3.3739 ms    477.4 GF      7.5 GB/s   17.1% of 44 GB/s
+mm_bf16_T64_conv.out_proj_2048x2048          th= 1    0.9693 ms    553.9 GF      8.9 GB/s   20.3% of 44 GB/s
+dwconv_bf16_T1_k7_g2048                      th= 1    0.0286 ms      1.0 GF      2.0 GB/s    4.6% of 44 GB/s
+dwconv_bf16_T16_k7_g2048                     th= 1    0.0416 ms     11.0 GF      2.9 GB/s    6.5% of 44 GB/s
+dwconv_bf16_T64_k7_g2048                     th= 1    0.0867 ms     21.1 GF      3.6 GB/s    8.3% of 44 GB/s
+dwconv_bf16_T256_k7_g2048                    th= 1    0.2780 ms     26.4 GF      4.0 GB/s    9.0% of 44 GB/s
+swiglu_bf16_T16                              th= 1    0.0126 ms     10.4 GF     15.7 GB/s   35.6% of 44 GB/s
+rmsnorm_bf16_T16                             th= 1    0.0162 ms      6.1 GF      8.1 GB/s   18.4% of 44 GB/s
+swiglu_bf16_T64                              th= 1    0.0463 ms     11.3 GF     17.0 GB/s   38.6% of 44 GB/s
+rmsnorm_bf16_T64                             th= 1    0.0503 ms      7.8 GF     10.4 GB/s   23.7% of 44 GB/s
+mm_fp32_T1_q_proj/o_proj_2048x2048           th= 1    0.1661 ms     50.5 GF    101.1 GB/s  229.7% of 44 GB/s
+mm_fp32_T1_k_proj/v_proj_512x2048            th= 1    0.0412 ms     50.9 GF    101.9 GB/s  231.7% of 44 GB/s
+mm_fp32_T1_ffn.w1/w3_7680x2048               th= 1    2.0660 ms     15.2 GF     30.5 GB/s   69.2% of 44 GB/s
+mm_fp32_T1_ffn.w2_2048x7680                  th= 1    2.0639 ms     15.2 GF     30.5 GB/s   69.3% of 44 GB/s
+mm_fp32_T1_conv.in_proj_6144x2048            th= 1    1.4545 ms     17.3 GF     34.6 GB/s   78.7% of 44 GB/s
+mm_fp32_T1_conv.out_proj_2048x2048           th= 1    0.1701 ms     49.3 GF     98.7 GB/s  224.2% of 44 GB/s
+mm_fp32_T16_q_proj/o_proj_2048x2048          th= 1    1.4182 ms     94.6 GF     11.9 GB/s   27.1% of 44 GB/s
+mm_fp32_T16_k_proj/v_proj_512x2048           th= 1    0.3351 ms    100.1 GF     12.9 GB/s   29.3% of 44 GB/s
+mm_fp32_T16_ffn.w1/w3_7680x2048              th= 1    8.3230 ms     60.5 GF      7.6 GB/s   17.2% of 44 GB/s
+mm_fp32_T16_ffn.w2_2048x7680                 th= 1    7.8383 ms     64.2 GF      8.1 GB/s   18.4% of 44 GB/s
+mm_fp32_T16_conv.in_proj_6144x2048           th= 1    6.2849 ms     64.1 GF      8.0 GB/s   18.2% of 44 GB/s
+mm_fp32_T16_conv.out_proj_2048x2048          th= 1    1.4080 ms     95.3 GF     12.0 GB/s   27.3% of 44 GB/s
+mm_fp32_T64_q_proj/o_proj_2048x2048          th= 1    4.2541 ms    126.2 GF      4.1 GB/s    9.2% of 44 GB/s
+mm_fp32_T64_k_proj/v_proj_512x2048           th= 1    1.0052 ms    133.5 GF      4.7 GB/s   10.7% of 44 GB/s
+mm_fp32_T64_ffn.w1/w3_7680x2048              th= 1   18.8144 ms    107.0 GF      3.4 GB/s    7.7% of 44 GB/s
+mm_fp32_T64_ffn.w2_2048x7680                 th= 1   18.7183 ms    107.6 GF      3.5 GB/s    7.9% of 44 GB/s
+mm_fp32_T64_conv.in_proj_6144x2048           th= 1   14.8299 ms    108.6 GF      3.4 GB/s    7.8% of 44 GB/s
+mm_fp32_T64_conv.out_proj_2048x2048          th= 1    4.2045 ms    127.7 GF      4.1 GB/s    9.4% of 44 GB/s
+dwconv_fp32_T1_k7_g2048                      th= 1    0.0287 ms      1.0 GF      4.0 GB/s    9.1% of 44 GB/s
+dwconv_fp32_T16_k7_g2048                     th= 1    0.0354 ms     13.0 GF      6.7 GB/s   15.3% of 44 GB/s
+dwconv_fp32_T64_k7_g2048                     th= 1    0.0552 ms     33.2 GF     11.4 GB/s   26.0% of 44 GB/s
+dwconv_fp32_T256_k7_g2048                    th= 1    0.1572 ms     46.7 GF     14.0 GB/s   31.9% of 44 GB/s
+swiglu_fp32_T16                              th= 1    0.0105 ms     12.5 GF     37.5 GB/s   85.2% of 44 GB/s
+rmsnorm_fp32_T16                             th= 1    0.0110 ms      8.9 GF     23.9 GB/s   54.3% of 44 GB/s
+swiglu_fp32_T64                              th= 1    0.0418 ms     12.6 GF     37.6 GB/s   85.5% of 44 GB/s
+rmsnorm_fp32_T64                             th= 1    0.0297 ms     13.2 GF     35.3 GB/s   80.3% of 44 GB/s
+mm_bf16_T1_q_proj/o_proj_2048x2048           th=16    0.0409 ms    205.1 GF    205.2 GB/s  466.4% of 44 GB/s
+mm_bf16_T1_k_proj/v_proj_512x2048            th=16    0.0187 ms    112.4 GF    112.6 GB/s  255.9% of 44 GB/s
+mm_bf16_T1_ffn.w1/w3_7680x2048               th=16    0.0714 ms    440.6 GF    440.6 GB/s  1001.4% of 44 GB/s
+mm_bf16_T1_ffn.w2_2048x7680                  th=16    0.0721 ms    436.4 GF    436.6 GB/s  992.3% of 44 GB/s
+mm_bf16_T1_conv.in_proj_6144x2048            th=16    0.0623 ms    403.9 GF    404.0 GB/s  918.2% of 44 GB/s
+mm_bf16_T1_conv.out_proj_2048x2048           th=16    0.0278 ms    301.9 GF    302.0 GB/s  686.4% of 44 GB/s
+mm_bf16_T16_q_proj/o_proj_2048x2048          th=16    0.1230 ms   1091.2 GF     68.7 GB/s  156.2% of 44 GB/s
+mm_bf16_T16_k_proj/v_proj_512x2048           th=16    0.0501 ms    670.0 GF     43.2 GB/s   98.1% of 44 GB/s
+mm_bf16_T16_ffn.w1/w3_7680x2048              th=16    0.3111 ms   1617.8 GF    101.3 GB/s  230.3% of 44 GB/s
+mm_bf16_T16_ffn.w2_2048x7680                 th=16    0.3428 ms   1468.1 GF     92.5 GB/s  210.2% of 44 GB/s
+mm_bf16_T16_conv.in_proj_6144x2048           th=16    0.2784 ms   1446.3 GF     90.6 GB/s  206.0% of 44 GB/s
+mm_bf16_T16_conv.out_proj_2048x2048          th=16    0.1039 ms   1291.3 GF     81.3 GB/s  184.9% of 44 GB/s
+mm_bf16_T64_q_proj/o_proj_2048x2048          th=16    0.2197 ms   2444.1 GF     39.4 GB/s   89.5% of 44 GB/s
+mm_bf16_T64_k_proj/v_proj_512x2048           th=16    0.0864 ms   1552.6 GF     27.3 GB/s   62.0% of 44 GB/s
+mm_bf16_T64_ffn.w1/w3_7680x2048              th=16    0.8355 ms   2409.7 GF     38.0 GB/s   86.3% of 44 GB/s
+mm_bf16_T64_ffn.w2_2048x7680                 th=16    0.5889 ms   3418.9 GF     55.1 GB/s  125.2% of 44 GB/s
+mm_bf16_T64_conv.in_proj_6144x2048           th=16    0.4325 ms   3724.2 GF     58.8 GB/s  133.6% of 44 GB/s
+mm_bf16_T64_conv.out_proj_2048x2048          th=16    0.1536 ms   3495.3 GF     56.3 GB/s  128.0% of 44 GB/s
+dwconv_bf16_T1_k7_g2048                      th=16    0.0786 ms      0.4 GF      0.7 GB/s    1.7% of 44 GB/s
+dwconv_bf16_T16_k7_g2048                     th=16    0.0719 ms      6.4 GF      1.7 GB/s    3.8% of 44 GB/s
+dwconv_bf16_T64_k7_g2048                     th=16    0.0629 ms     29.2 GF      5.0 GB/s   11.4% of 44 GB/s
+dwconv_bf16_T256_k7_g2048                    th=16    0.0776 ms     94.6 GF     14.2 GB/s   32.3% of 44 GB/s
+swiglu_bf16_T16                              th=16    0.0136 ms      9.7 GF     14.5 GB/s   32.9% of 44 GB/s
+rmsnorm_bf16_T16                             th=16    0.0306 ms      3.2 GF      4.3 GB/s    9.7% of 44 GB/s
+swiglu_bf16_T64                              th=16    0.0294 ms     17.8 GF     26.8 GB/s   60.8% of 44 GB/s
+rmsnorm_bf16_T64                             th=16    0.1040 ms      3.8 GF      5.0 GB/s   11.5% of 44 GB/s
+mm_fp32_T1_q_proj/o_proj_2048x2048           th=16    0.1682 ms     49.9 GF     99.8 GB/s  226.8% of 44 GB/s
+mm_fp32_T1_k_proj/v_proj_512x2048            th=16    0.0445 ms     47.1 GF     94.4 GB/s  214.4% of 44 GB/s
+mm_fp32_T1_ffn.w1/w3_7680x2048               th=16    2.0747 ms     15.2 GF     30.3 GB/s   68.9% of 44 GB/s
+mm_fp32_T1_ffn.w2_2048x7680                  th=16    2.0329 ms     15.5 GF     31.0 GB/s   70.4% of 44 GB/s
+mm_fp32_T1_conv.in_proj_6144x2048            th=16    1.3320 ms     18.9 GF     37.8 GB/s   85.9% of 44 GB/s
+mm_fp32_T1_conv.out_proj_2048x2048           th=16    0.1802 ms     46.5 GF     93.1 GB/s  211.7% of 44 GB/s
+mm_fp32_T16_q_proj/o_proj_2048x2048          th=16    0.2971 ms    451.8 GF     56.9 GB/s  129.3% of 44 GB/s
+mm_fp32_T16_k_proj/v_proj_512x2048           th=16    0.1164 ms    288.3 GF     37.2 GB/s   84.5% of 44 GB/s
+mm_fp32_T16_ffn.w1/w3_7680x2048              th=16    3.7575 ms    133.9 GF     16.8 GB/s   38.1% of 44 GB/s
+mm_fp32_T16_ffn.w2_2048x7680                 th=16    2.2314 ms    225.6 GF     28.4 GB/s   64.6% of 44 GB/s
+mm_fp32_T16_conv.in_proj_6144x2048           th=16    1.9413 ms    207.4 GF     26.0 GB/s   59.1% of 44 GB/s
+mm_fp32_T16_conv.out_proj_2048x2048          th=16    0.3959 ms    339.1 GF     42.7 GB/s   97.1% of 44 GB/s
+mm_fp32_T64_q_proj/o_proj_2048x2048          th=16    0.7556 ms    710.5 GF     22.9 GB/s   52.0% of 44 GB/s
+mm_fp32_T64_k_proj/v_proj_512x2048           th=16    0.1854 ms    724.0 GF     25.5 GB/s   57.8% of 44 GB/s
+mm_fp32_T64_ffn.w1/w3_7680x2048              th=16    5.9264 ms    339.7 GF     10.7 GB/s   24.3% of 44 GB/s
+mm_fp32_T64_ffn.w2_2048x7680                 th=16    3.9513 ms    509.5 GF     16.4 GB/s   37.3% of 44 GB/s
+mm_fp32_T64_conv.in_proj_6144x2048           th=16    3.9422 ms    408.6 GF     12.9 GB/s   29.3% of 44 GB/s
+mm_fp32_T64_conv.out_proj_2048x2048          th=16    0.7683 ms    698.8 GF     22.5 GB/s   51.2% of 44 GB/s
+dwconv_fp32_T1_k7_g2048                      th=16    0.0721 ms      0.4 GF      1.6 GB/s    3.6% of 44 GB/s
+dwconv_fp32_T16_k7_g2048                     th=16    0.0692 ms      6.6 GF      3.4 GB/s    7.8% of 44 GB/s
+dwconv_fp32_T64_k7_g2048                     th=16    0.0873 ms     21.0 GF      7.2 GB/s   16.4% of 44 GB/s
+dwconv_fp32_T256_k7_g2048                    th=16    0.0811 ms     90.5 GF     27.2 GB/s   61.7% of 44 GB/s
+swiglu_fp32_T16                              th=16    0.0086 ms     15.2 GF     45.7 GB/s  104.0% of 44 GB/s
+rmsnorm_fp32_T16                             th=16    0.0259 ms      3.8 GF     10.1 GB/s   23.0% of 44 GB/s
+swiglu_fp32_T64                              th=16    0.0239 ms     21.9 GF     65.7 GB/s  149.3% of 44 GB/s
+rmsnorm_fp32_T64                             th=16    0.0708 ms      5.5 GF     14.8 GB/s   33.7% of 44 GB/s
+mm_bf16_T1_q_proj/o_proj_2048x2048           th=32    0.0835 ms    100.5 GF    100.5 GB/s  228.4% of 44 GB/s
+mm_bf16_T1_k_proj/v_proj_512x2048            th=32    0.0259 ms     81.0 GF     81.2 GB/s  184.5% of 44 GB/s
+mm_bf16_T1_ffn.w1/w3_7680x2048               th=32    0.1252 ms    251.3 GF    251.4 GB/s  571.3% of 44 GB/s
+mm_bf16_T1_ffn.w2_2048x7680                  th=32    0.1225 ms    256.7 GF    256.8 GB/s  583.7% of 44 GB/s
+mm_bf16_T1_conv.in_proj_6144x2048            th=32    0.0802 ms    313.7 GF    313.7 GB/s  713.0% of 44 GB/s
+mm_bf16_T1_conv.out_proj_2048x2048           th=32    0.0340 ms    247.0 GF    247.1 GB/s  561.6% of 44 GB/s
+mm_bf16_T16_q_proj/o_proj_2048x2048          th=32    0.1412 ms    950.3 GF     59.9 GB/s  136.0% of 44 GB/s
+mm_bf16_T16_k_proj/v_proj_512x2048           th=32    0.0658 ms    509.6 GF     32.8 GB/s   74.6% of 44 GB/s
+mm_bf16_T16_ffn.w1/w3_7680x2048              th=32    0.3608 ms   1395.0 GF     87.4 GB/s  198.6% of 44 GB/s
+mm_bf16_T16_ffn.w2_2048x7680                 th=32    0.3868 ms   1301.4 GF     82.0 GB/s  186.3% of 44 GB/s
+mm_bf16_T16_conv.in_proj_6144x2048           th=32    0.3605 ms   1116.8 GF     70.0 GB/s  159.0% of 44 GB/s
+mm_bf16_T16_conv.out_proj_2048x2048          th=32    0.1737 ms    772.7 GF     48.7 GB/s  110.6% of 44 GB/s
+mm_bf16_T64_q_proj/o_proj_2048x2048          th=32    0.2886 ms   1860.4 GF     30.0 GB/s   68.1% of 44 GB/s
+mm_bf16_T64_k_proj/v_proj_512x2048           th=32    0.1428 ms    939.6 GF     16.5 GB/s   37.5% of 44 GB/s
+mm_bf16_T64_ffn.w1/w3_7680x2048              th=32    0.6812 ms   2955.5 GF     46.6 GB/s  105.8% of 44 GB/s
+mm_bf16_T64_ffn.w2_2048x7680                 th=32    0.6810 ms   2956.1 GF     47.6 GB/s  108.3% of 44 GB/s
+mm_bf16_T64_conv.in_proj_6144x2048           th=32    0.5404 ms   2980.4 GF     47.1 GB/s  106.9% of 44 GB/s
+mm_bf16_T64_conv.out_proj_2048x2048          th=32    0.1981 ms   2709.8 GF     43.7 GB/s   99.2% of 44 GB/s
+dwconv_bf16_T1_k7_g2048                      th=32    0.1204 ms      0.2 GF      0.5 GB/s    1.1% of 44 GB/s
+dwconv_bf16_T16_k7_g2048                     th=32    0.0909 ms      5.0 GF      1.3 GB/s    3.0% of 44 GB/s
+dwconv_bf16_T64_k7_g2048                     th=32    0.1305 ms     14.1 GF      2.4 GB/s    5.5% of 44 GB/s
+dwconv_bf16_T256_k7_g2048                    th=32    0.1446 ms     50.8 GF      7.6 GB/s   17.3% of 44 GB/s
+swiglu_bf16_T16                              th=32    0.0146 ms      9.0 GF     13.5 GB/s   30.6% of 44 GB/s
+rmsnorm_bf16_T16                             th=32    0.0601 ms      1.6 GF      2.2 GB/s    5.0% of 44 GB/s
+swiglu_bf16_T64                              th=32    0.0376 ms     14.0 GF     20.9 GB/s   47.6% of 44 GB/s
+rmsnorm_bf16_T64                             th=32    0.1122 ms      3.5 GF      4.7 GB/s   10.6% of 44 GB/s
+mm_fp32_T1_q_proj/o_proj_2048x2048           th=32    0.1621 ms     51.8 GF    103.6 GB/s  235.4% of 44 GB/s
+mm_fp32_T1_k_proj/v_proj_512x2048            th=32    0.0424 ms     49.5 GF     99.2 GB/s  225.4% of 44 GB/s
+mm_fp32_T1_ffn.w1/w3_7680x2048               th=32    2.1554 ms     14.6 GF     29.2 GB/s   66.3% of 44 GB/s
+mm_fp32_T1_ffn.w2_2048x7680                  th=32    2.0260 ms     15.5 GF     31.1 GB/s   70.6% of 44 GB/s
+mm_fp32_T1_conv.in_proj_6144x2048            th=32    1.5461 ms     16.3 GF     32.6 GB/s   74.0% of 44 GB/s
+mm_fp32_T1_conv.out_proj_2048x2048           th=32    0.1645 ms     51.0 GF    102.1 GB/s  231.9% of 44 GB/s
+mm_fp32_T16_q_proj/o_proj_2048x2048          th=32    0.4981 ms    269.5 GF     33.9 GB/s   77.2% of 44 GB/s
+mm_fp32_T16_k_proj/v_proj_512x2048           th=32    0.1352 ms    248.2 GF     32.0 GB/s   72.7% of 44 GB/s
+mm_fp32_T16_ffn.w1/w3_7680x2048              th=32    5.2286 ms     96.3 GF     12.1 GB/s   27.4% of 44 GB/s
+mm_fp32_T16_ffn.w2_2048x7680                 th=32    4.5133 ms    111.5 GF     14.0 GB/s   31.9% of 44 GB/s
+mm_fp32_T16_conv.in_proj_6144x2048           th=32    3.3667 ms    119.6 GF     15.0 GB/s   34.1% of 44 GB/s
+mm_fp32_T16_conv.out_proj_2048x2048          th=32    0.4979 ms    269.6 GF     34.0 GB/s   77.2% of 44 GB/s
+mm_fp32_T64_q_proj/o_proj_2048x2048          th=32    0.8796 ms    610.4 GF     19.7 GB/s   44.7% of 44 GB/s
+mm_fp32_T64_k_proj/v_proj_512x2048           th=32    0.2221 ms    604.4 GF     21.2 GB/s   48.3% of 44 GB/s
+mm_fp32_T64_ffn.w1/w3_7680x2048              th=32    6.5136 ms    309.1 GF      9.7 GB/s   22.1% of 44 GB/s
+mm_fp32_T64_ffn.w2_2048x7680                 th=32    4.5659 ms    440.9 GF     14.2 GB/s   32.3% of 44 GB/s
+mm_fp32_T64_conv.in_proj_6144x2048           th=32    4.7240 ms    340.9 GF     10.8 GB/s   24.5% of 44 GB/s
+mm_fp32_T64_conv.out_proj_2048x2048          th=32    0.7650 ms    701.8 GF     22.6 GB/s   51.4% of 44 GB/s
+dwconv_fp32_T1_k7_g2048                      th=32    0.1429 ms      0.2 GF      0.8 GB/s    1.8% of 44 GB/s
+dwconv_fp32_T16_k7_g2048                     th=32    0.0911 ms      5.0 GF      2.6 GB/s    5.9% of 44 GB/s
+dwconv_fp32_T64_k7_g2048                     th=32    0.1113 ms     16.5 GF      5.7 GB/s   12.9% of 44 GB/s
+dwconv_fp32_T256_k7_g2048                    th=32    0.1170 ms     62.7 GF     18.8 GB/s   42.8% of 44 GB/s
+swiglu_fp32_T16                              th=32    0.0087 ms     15.1 GF     45.4 GB/s  103.1% of 44 GB/s
+rmsnorm_fp32_T16                             th=32    0.0335 ms      2.9 GF      7.8 GB/s   17.8% of 44 GB/s
+swiglu_fp32_T64                              th=32    0.0360 ms     14.6 GF     43.7 GB/s   99.4% of 44 GB/s
+rmsnorm_fp32_T64                             th=32    0.1239 ms      3.2 GF      8.5 GB/s   19.2% of 44 GB/s

@@ -1,0 +1,13 @@
+files: ['chat_template.jinja', 'config.json', 'configuration_lfm3.py', 'generation_config.json', 'lfm3_conv.py', 'model.safetensors', 'modeling_lfm3.py', 'special_tokens_map.json', 'tokenizer.json', 'tokenizer_config.json']
+got chat_template.jinja 12129 5.6s
+got config.json 1454 2.1s
+got configuration_lfm3.py 6113 6.7s
+got generation_config.json 328 3.1s
+got lfm3_conv.py 8532 3.1s
+Traceback (most recent call last):
+  File "<stdin>", line 10, in <module>
+  File "/usr/lib/python3.14/urllib/request.py", line 248, in urlretrieve
+    raise ContentTooShortError(
+        "retrieval incomplete: got only %i out of %i bytes"
+        % (read, size), result)
+urllib.error.ContentTooShortError: <urlopen error retrieval incomplete: got only 180868484 out of 3457635448 bytes>

@@ -1,0 +1,187 @@
+{
+ "GEMM (BF16 tensor core, mm/addmm)": {
+  "ms": 131.622,
+  "pct": 76.81,
+  "calls": 295
+ },
+ "elementwise mul (gates, silu*mul)": {
+  "ms": 13.653,
+  "pct": 7.97,
+  "calls": 698
+ },
+ "attention (FMHA)": {
+  "ms": 7.266,
+  "pct": 4.24,
+  "calls": 16
+ },
+ "depthwise conv1d": {
+  "ms": 4.513,
+  "pct": 2.63,
+  "calls": 358
+ },
+ "memory copy / layout": {
+  "ms": 2.94,
+  "pct": 1.72,
+  "calls": 410
+ },
+ "rsqrt/pow (norm)": {
+  "ms": 2.816,
+  "pct": 1.64,
+  "calls": 238
+ },
+ "elementwise silu/sigmoid": {
+  "ms": 2.098,
+  "pct": 1.22,
+  "calls": 70
+ },
+ "reductions (norm/loss)": {
+  "ms": 1.631,
+  "pct": 0.95,
+  "calls": 240
+ },
+ "other (aten::add)": {
+  "ms": 1.193,
+  "pct": 0.7,
+  "calls": 192
+ },
+ "other (void at::native::vectorized_elementwise_)": {
+  "ms": 1.076,
+  "pct": 0.63,
+  "calls": 310
+ },
+ "other (void pytorch_flash::flash_fwd_kernel<Fla)": {
+  "ms": 0.932,
+  "pct": 0.54,
+  "calls": 6
+ },
+ "other (void at::native::elementwise_kernel<128,)": {
+  "ms": 0.524,
+  "pct": 0.31,
+  "calls": 52
+ },
+ "other (aten::cat)": {
+  "ms": 0.478,
+  "pct": 0.28,
+  "calls": 26
+ },
+ "other (aten::rsqrt)": {
+  "ms": 0.189,
+  "pct": 0.11,
+  "calls": 119
+ },
+ "other (nvjet_sm120_tst_mma_16x32x128_8_16x8x128)": {
+  "ms": 0.152,
+  "pct": 0.09,
+  "calls": 11
+ },
+ "other (aten::neg)": {
+  "ms": 0.116,
+  "pct": 0.07,
+  "calls": 22
+ },
+ "other (aten::where)": {
+  "ms": 0.061,
+  "pct": 0.04,
+  "calls": 10
+ },
+ "other (aten::gather)": {
+  "ms": 0.013,
+  "pct": 0.01,
+  "calls": 1
+ },
+ "other (void at::native::vectorized_gather_kerne)": {
+  "ms": 0.013,
+  "pct": 0.01,
+  "calls": 1
+ },
+ "other (aten::fill_)": {
+  "ms": 0.008,
+  "pct": 0.0,
+  "calls": 11
+ },
+ "other (aten::bitwise_and)": {
+  "ms": 0.008,
+  "pct": 0.0,
+  "calls": 2
+ },
+ "other (aten::le)": {
+  "ms": 0.007,
+  "pct": 0.0,
+  "calls": 1
+ },
+ "other (aten::gt)": {
+  "ms": 0.007,
+  "pct": 0.0,
+  "calls": 1
+ },
+ "other (aten::sub)": {
+  "ms": 0.005,
+  "pct": 0.0,
+  "calls": 5
+ },
+ "other (aten::zero_)": {
+  "ms": 0.005,
+  "pct": 0.0,
+  "calls": 10
+ },
+ "other (Memset (Device))": {
+  "ms": 0.005,
+  "pct": 0.0,
+  "calls": 10
+ },
+ "other (void at::native::unrolled_elementwise_ke)": {
+  "ms": 0.004,
+  "pct": 0.0,
+  "calls": 4
+ },
+ "other (void at_cuda_detail::cub::detail::scan::)": {
+  "ms": 0.004,
+  "pct": 0.0,
+  "calls": 4
+ },
+ "other (aten::arange)": {
+  "ms": 0.003,
+  "pct": 0.0,
+  "calls": 10
+ },
+ "other (void (anonymous namespace)::elementwise_)": {
+  "ms": 0.003,
+  "pct": 0.0,
+  "calls": 5
+ },
+ "other (aten::sin)": {
+  "ms": 0.003,
+  "pct": 0.0,
+  "calls": 2
+ },
+ "other (aten::cos)": {
+  "ms": 0.003,
+  "pct": 0.0,
+  "calls": 2
+ },
+ "other (aten::_local_scalar_dense)": {
+  "ms": 0.002,
+  "pct": 0.0,
+  "calls": 2
+ },
+ "other (Memcpy DtoH (Device -> Pinned))": {
+  "ms": 0.002,
+  "pct": 0.0,
+  "calls": 2
+ },
+ "other (aten::eq)": {
+  "ms": 0.002,
+  "pct": 0.0,
+  "calls": 2
+ },
+ "other (aten::ne)": {
+  "ms": 0.002,
+  "pct": 0.0,
+  "calls": 2
+ },
+ "other (Memcpy DtoD (Device -> Device))": {
+  "ms": 0.002,
+  "pct": 0.0,
+  "calls": 2
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "ffn_repeat_exact": true,
+ "ffn_perm_max_abs": 0.0001220703125,
+ "ffn_perm_rel": 6.67572021484375e-05,
+ "ffn_perm_fp32_rel": 4.2717147152870893e-07,
+ "ffn_perm_fp32_max": 9.872019290924072e-08,
+ "conv_repeat_exact": true,
+ "conv_perm_max_abs": 6.103515625e-05,
+ "conv_perm_rel": 8.392333984375e-05,
+ "act_scale": {
+  "x_max": 0.150390625,
+  "y0_max": 0.09716796875
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "by_T": {
+  "16": {
+   "median_ms": 12.096,
+   "min_ms": 11.046,
+   "p90_ms": 12.18,
+   "tokens_per_s": 1322.8
+  },
+  "64": {
+   "median_ms": 12.154,
+   "min_ms": 12.064,
+   "p90_ms": 12.81,
+   "tokens_per_s": 5265.8
+  },
+  "256": {
+   "median_ms": 23.384,
+   "min_ms": 23.148,
+   "p90_ms": 24.289,
+   "tokens_per_s": 10947.7
+  },
+  "1024": {
+   "median_ms": 88.583,
+   "min_ms": 87.316,
+   "p90_ms": 103.96,
+   "tokens_per_s": 11559.8
+  }
+ },
+ "decode": {
+  "decode_ms_per_token_median": 11.419,
+  "decode_ms_per_token_min": 11.362,
+  "n_new": 64,
+  "tok_per_s": 87.58
+ },
+ "vl_prefill_256px": {
+  "median_ms": 19.051,
+  "min_ms": 18.936,
+  "p90_ms": 20.044,
+  "n_in": 91,
+  "image_grid_thw": [
+   [
+    1,
+    16,
+    18
+   ]
+  ],
+  "pixels": [
+   288,
+   1536
+  ]
+ }
+}

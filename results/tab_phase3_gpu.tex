@@ -1,0 +1,12 @@
+\begin{tabular}{llrrrrrr}
+\toprule
+matrix & $\tau$ & active & \texttt{torch.mv} & \begin{tabular}[c]{@{}l@{}}triton\\dense\end{tabular} & triton sparse & speedup & bytes read \\
+\midrule
+\texttt{down\_proj} & 0.00 & 1.000 & 87.4 & 54.3 & 54.2 & 1.61$\times$ & 31.46 MB \\
+\texttt{down\_proj} & 0.25 & 0.746 & 87.4 & 54.4 & 40.8 & 2.14$\times$ & 23.46 MB \\
+\texttt{down\_proj} & 0.50 & 0.500 & 87.5 & 54.4 & 27.8 & 3.15$\times$ & 15.73 MB \\
+\texttt{out\_proj} & 0.00 & 1.000 & 24.2 & 15.3 & 15.2 & 1.60$\times$ & 8.39 MB \\
+\texttt{out\_proj} & 0.25 & 0.750 & 24.3 & 15.2 & 11.7 & 2.08$\times$ & 6.29 MB \\
+\texttt{out\_proj} & 0.50 & 0.500 & 24.2 & 15.2 & 8.1 & 3.01$\times$ & 4.19 MB \\
+\bottomrule
+\end{tabular}

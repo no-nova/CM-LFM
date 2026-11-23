@@ -1,0 +1,6 @@
+a9bb8b1c159c9d6c3007bc1c7ad8018b599f759d97da2701714e37426283e131  /home/user/Downloads/CNN-CM/models/LiquidAI/LFM3-VL-2B/model.safetensors
+18a02e8b5963e38c98683e2c948705ea45220d75f017e9b4bdd9cf54692e6dc3  /home/user/Downloads/CNN-CM/models/LiquidAI/LFM3-VL-2B/config.json
+80d4a985382a22774212759248a6b4c737bfbf9c2a47b3dd7f797dda748e4bb4  /home/user/Downloads/CNN-CM/models/LiquidAI/LFM3-VL-2B/lfm3_conv.py
+4a676bee2cf184d51a9dacbb9d7c4abae85515a042a920f8e2578b22bba3d6e8  /home/user/Downloads/CNN-CM/models/LiquidAI/LFM3-VL-2B/modeling_lfm3.py
+a41cbe7242f379808bcc005207ee0d7b1709528966c1e4da46baa7c41827ac79  /home/user/Downloads/CNN-CM/models/LiquidAI/LFM3-VL-2B/modeling_lfm3_vl.py
+dd2f4b18eed69f3a303dbf438a5ecd20d6375abad8d1aa62699b3d5294e6a71a  /home/user/Downloads/CNN-CM/models/LiquidAI/LFM3-VL-2B/configuration_lfm3.py

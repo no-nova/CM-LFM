@@ -1,0 +1,7 @@
+{
+ "clip": "V1_static_surveillance (8 frames, 224x224, 32x32 blocks)",
+ "tau_abs_p95": 0.03388,
+ "tau_abs_p99": 0.044151,
+ "noise_mean": 0.01697,
+ "noise_max": 0.050527
+}

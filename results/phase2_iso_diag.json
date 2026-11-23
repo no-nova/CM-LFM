@@ -1,0 +1,12 @@
+{
+ "determinism_flagTrue": 0.0,
+ "identity_perm_flagTrue": 0.0,
+ "pi_ffn_all_flagTrue": 0.7578125,
+ "pi_ffn_layer0_flagTrue": 1.2421875,
+ "reload_bitwise_identical_flagTrue": 0.0,
+ "determinism_flagFalse": 0.0,
+ "identity_perm_flagFalse": 0.0,
+ "pi_ffn_all_flagFalse": 0.7578125,
+ "pi_ffn_layer0_flagFalse": 1.2421875,
+ "reload_bitwise_identical_flagFalse": 0.0
+}

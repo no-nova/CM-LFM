@@ -1,0 +1,18 @@
+{
+ "seq_len": 16,
+ "dtype": "float32",
+ "weights_gib": 7.15,
+ "pi_ffn": {
+  "max_abs_dh": 0.00010395050048828125,
+  "rel_l2_dh": 2.285135678903316e-06,
+  "h_scale_max": 27.59630584716797,
+  "h_scale_rms": 2.6650469303131104
+ },
+ "pi_conv": {
+  "max_abs_dh": 6.103515625e-05,
+  "rel_l2_dh": 2.373822326262598e-06,
+  "h_scale_max": 27.59630584716797,
+  "h_scale_rms": 2.6650469303131104
+ },
+ "restore_exact": true
+}

@@ -1,0 +1,81 @@
+{
+ "load_seconds": 2.0,
+ "vram_weights_gib": 3.573,
+ "profile_top": [
+  [
+   "aten::mm",
+   65887.0,
+   153
+  ],
+  [
+   "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_64x64_32x6_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_64x64_32x6_tn_align8::Params)",
+   65734.6,
+   142
+  ],
+  [
+   "aten::mul",
+   6826.3,
+   349
+  ],
+  [
+   "aten::_efficient_attention_forward",
+   3167.0,
+   5
+  ],
+  [
+   "fmha_cutlassF_bf16_aligned_64x128_rf_sm80(PyTorchMemEffAttention::AttentionKernel<cutlass::bfloat16_t, cutlass::arch::Sm80, true, 64, 128, 128, true, true>::Params)",
+   3167.0,
+   5
+  ],
+  [
+   "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+   2811.4,
+   156
+  ],
+  [
+   "aten::copy_",
+   2214.1,
+   359
+  ],
+  [
+   "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+   2103.6,
+   165
+  ],
+  [
+   "void at::native::vectorized_elementwise_kernel<4, at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 3ul>, false>(int, at::native::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 3ul>)",
+   1906.9,
+   24
+  ],
+  [
+   "aten::pow",
+   1407.8,
+   119
+  ],
+  [
+   "void at::native::vectorized_elementwise_kernel<4, at::native::(anonymous namespace)::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase&, float)::{lambda(float)#1}, std::array<char*, 2ul>, false>(int, at::native::(anonymous namespace)::pow_tensor_scalar_kernel_impl<float, float>(at::TensorIteratorBase&, float)::{lambda(float)#1}, std::array<char*, 2ul>)",
+   1407.8,
+   119
+  ],
+  [
+   "void at::native::vectorized_elementwise_kernel<4, at::native::converting_copy_kernel_cuda<c10::BFloat16, float>(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>, false>(int, at::native::converting_copy_kernel_cuda<c10::BFloat16, float>(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)",
+   1311.8,
+   185
+  ]
+ ],
+ "vqa": {
+  "image_acc": 1.0,
+  "video_acc": 0.5,
+  "video_motion_median": 0.016463198699057102
+ },
+ "vram_peak_gib": 7.043,
+ "mem_peak_mb": {
+  "anon": 1732,
+  "file": 4020,
+  "rss": 4832
+ },
+ "tasks": [
+  "profile",
+  "vqa"
+ ]
+}

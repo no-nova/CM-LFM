@@ -1,0 +1,1022 @@
+{
+ "model": "LFM3-VL-2B",
+ "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+ "patch_px": 32,
+ "grid": 7,
+ "tau_abs": 0.0339,
+ "s_hat_flush": 0.5,
+ "clips": {
+  "V1_static_surveillance": {
+   "logit_kl": 1e-06,
+   "top1_agree": 1,
+   "frames": 8,
+   "tokens_dense": 247,
+   "tokens_skipped": 100,
+   "token_reduction": 0.5951,
+   "kept_fraction": 0.25,
+   "n_flush_frames": 1,
+   "flush_frames": [
+    0
+   ],
+   "s_hat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "prefill_ms_dense": 25.189,
+   "prefill_ms_skipped": 13.715,
+   "prefill_speedup": 1.837,
+   "vision_ms": 10.675,
+   "scene_cut_maxabs_flush": 0.0,
+   "feature_reuse_rel_l2": 0.0,
+   "mask_diag": [
+    {
+     "frame": 0,
+     "s_hat": 1.0,
+     "flushed": true,
+     "mean_diff": 0.0,
+     "blocks_raw": null,
+     "blocks_after_majority": 49,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 1,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.0173,
+     "blocks_raw": 3,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 2,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01702,
+     "blocks_raw": 2,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 3,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01723,
+     "blocks_raw": 3,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 4,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01682,
+     "blocks_raw": 3,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 5,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01671,
+     "blocks_raw": 3,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    }
+   ]
+  },
+  "V2_local_motion": {
+   "logit_kl": 1e-06,
+   "top1_agree": 1,
+   "frames": 8,
+   "tokens_dense": 247,
+   "tokens_skipped": 110,
+   "token_reduction": 0.5547,
+   "kept_fraction": 0.301,
+   "n_flush_frames": 1,
+   "flush_frames": [
+    0
+   ],
+   "s_hat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0408,
+    0.0,
+    0.0204
+   ],
+   "prefill_ms_dense": 22.995,
+   "prefill_ms_skipped": 13.133,
+   "prefill_speedup": 1.751,
+   "vision_ms": 9.546,
+   "scene_cut_maxabs_flush": 0.0,
+   "feature_reuse_rel_l2": 0.0,
+   "mask_diag": [
+    {
+     "frame": 0,
+     "s_hat": 1.0,
+     "flushed": true,
+     "mean_diff": 0.0,
+     "blocks_raw": null,
+     "blocks_after_majority": 49,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 1,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01798,
+     "blocks_raw": 3,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 2,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01633,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 3,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01811,
+     "blocks_raw": 3,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 4,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.01668,
+     "blocks_raw": 1,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 5,
+     "s_hat": 0.0408,
+     "flushed": false,
+     "mean_diff": 0.01894,
+     "blocks_raw": 4,
+     "blocks_after_majority": 2,
+     "blocks_kept": 6
+    }
+   ]
+  },
+  "V3_fast_natural_object": {
+   "logit_kl": 1e-06,
+   "top1_agree": 1,
+   "frames": 8,
+   "tokens_dense": 247,
+   "tokens_skipped": 100,
+   "token_reduction": 0.5951,
+   "kept_fraction": 0.25,
+   "n_flush_frames": 1,
+   "flush_frames": [
+    0
+   ],
+   "s_hat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "prefill_ms_dense": 23.088,
+   "prefill_ms_skipped": 12.985,
+   "prefill_speedup": 1.778,
+   "vision_ms": 9.848,
+   "scene_cut_maxabs_flush": 0.0,
+   "feature_reuse_rel_l2": 0.0,
+   "mask_diag": [
+    {
+     "frame": 0,
+     "s_hat": 1.0,
+     "flushed": true,
+     "mean_diff": 0.0,
+     "blocks_raw": null,
+     "blocks_after_majority": 49,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 1,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00486,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 2,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00446,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 3,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00447,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 4,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00474,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 5,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00536,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    }
+   ]
+  },
+  "V4_camera_pan": {
+   "logit_kl": 0.0,
+   "top1_agree": 1,
+   "frames": 8,
+   "tokens_dense": 247,
+   "tokens_skipped": 247,
+   "token_reduction": 0.0,
+   "kept_fraction": 1.0,
+   "n_flush_frames": 8,
+   "flush_frames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "s_hat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "prefill_ms_dense": 23.842,
+   "prefill_ms_skipped": 23.854,
+   "prefill_speedup": 0.999,
+   "vision_ms": 9.965,
+   "scene_cut_maxabs_flush": 0.0,
+   "feature_reuse_rel_l2": 0.0,
+   "mask_diag": [
+    {
+     "frame": 0,
+     "s_hat": 1.0,
+     "flushed": true,
+     "mean_diff": 0.0,
+     "blocks_raw": null,
+     "blocks_after_majority": 49,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 1,
+     "s_hat": 0.0,
+     "flushed": true,
+     "mean_diff": 0.02998,
+     "blocks_raw": 7,
+     "blocks_after_majority": 0,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 2,
+     "s_hat": 0.0,
+     "flushed": true,
+     "mean_diff": 0.03026,
+     "blocks_raw": 7,
+     "blocks_after_majority": 0,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 3,
+     "s_hat": 0.0,
+     "flushed": true,
+     "mean_diff": 0.03008,
+     "blocks_raw": 7,
+     "blocks_after_majority": 0,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 4,
+     "s_hat": 0.0,
+     "flushed": true,
+     "mean_diff": 0.03266,
+     "blocks_raw": 7,
+     "blocks_after_majority": 0,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 5,
+     "s_hat": 0.0,
+     "flushed": true,
+     "mean_diff": 0.03165,
+     "blocks_raw": 7,
+     "blocks_after_majority": 0,
+     "blocks_kept": 49
+    }
+   ]
+  },
+  "V5_illumination_change": {
+   "logit_kl": 1e-06,
+   "top1_agree": 1,
+   "frames": 8,
+   "tokens_dense": 247,
+   "tokens_skipped": 100,
+   "token_reduction": 0.5951,
+   "kept_fraction": 0.25,
+   "n_flush_frames": 1,
+   "flush_frames": [
+    0
+   ],
+   "s_hat": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "prefill_ms_dense": 23.196,
+   "prefill_ms_skipped": 12.881,
+   "prefill_speedup": 1.801,
+   "vision_ms": 9.574,
+   "scene_cut_maxabs_flush": 0.0,
+   "feature_reuse_rel_l2": 0.0,
+   "mask_diag": [
+    {
+     "frame": 0,
+     "s_hat": 1.0,
+     "flushed": true,
+     "mean_diff": 0.0,
+     "blocks_raw": null,
+     "blocks_after_majority": 49,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 1,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00678,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 2,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00683,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 3,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00671,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 4,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00665,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    },
+    {
+     "frame": 5,
+     "s_hat": 0.0,
+     "flushed": false,
+     "mean_diff": 0.00677,
+     "blocks_raw": 0,
+     "blocks_after_majority": 0,
+     "blocks_kept": 0
+    }
+   ]
+  },
+  "V6_multi_shot_cuts": {
+   "logit_kl": 0.0,
+   "top1_agree": 1,
+   "frames": 8,
+   "tokens_dense": 247,
+   "tokens_skipped": 247,
+   "token_reduction": 0.0,
+   "kept_fraction": 1.0,
+   "n_flush_frames": 8,
+   "flush_frames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "s_hat": [
+    1.0,
+    0.551,
+    0.551,
+    0.551,
+    0.551,
+    0.5714,
+    0.5918,
+    0.5714
+   ],
+   "prefill_ms_dense": 23.962,
+   "prefill_ms_skipped": 24.021,
+   "prefill_speedup": 0.998,
+   "vision_ms": 10.016,
+   "scene_cut_maxabs_flush": 0.0,
+   "feature_reuse_rel_l2": 0.0,
+   "mask_diag": [
+    {
+     "frame": 0,
+     "s_hat": 1.0,
+     "flushed": true,
+     "mean_diff": 0.0,
+     "blocks_raw": null,
+     "blocks_after_majority": 49,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 1,
+     "s_hat": 0.551,
+     "flushed": true,
+     "mean_diff": 0.06395,
+     "blocks_raw": 26,
+     "blocks_after_majority": 27,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 2,
+     "s_hat": 0.551,
+     "flushed": true,
+     "mean_diff": 0.06764,
+     "blocks_raw": 26,
+     "blocks_after_majority": 27,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 3,
+     "s_hat": 0.551,
+     "flushed": true,
+     "mean_diff": 0.06894,
+     "blocks_raw": 26,
+     "blocks_after_majority": 27,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 4,
+     "s_hat": 0.551,
+     "flushed": true,
+     "mean_diff": 0.06971,
+     "blocks_raw": 27,
+     "blocks_after_majority": 27,
+     "blocks_kept": 49
+    },
+    {
+     "frame": 5,
+     "s_hat": 0.5714,
+     "flushed": true,
+     "mean_diff": 0.07445,
+     "blocks_raw": 28,
+     "blocks_after_majority": 28,
+     "blocks_kept": 49
+    }
+   ]
+  }
+ },
+ "vqa": {
+  "V1_static_surveillance": {
+   "dense_hits": 4,
+   "skip_hits": 4,
+   "n": 4,
+   "detail": [
+    {
+     "order": [
+      "an indoor hallway with people walking",
+      "a beach with waves"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -4.298,
+      -7.8765
+     ],
+     "lp_skip": [
+      -4.5465,
+      -7.7378
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a beach with waves",
+      "an indoor hallway with people walking"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -7.7919,
+      -4.2676
+     ],
+     "lp_skip": [
+      -6.7743,
+      -4.3652
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "an indoor hallway with people walking",
+      "a highway with cars"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -4.3408,
+      -9.0128
+     ],
+     "lp_skip": [
+      -4.5894,
+      -9.0164
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a highway with cars",
+      "an indoor hallway with people walking"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -8.8841,
+      -4.2423
+     ],
+     "lp_skip": [
+      -8.5835,
+      -4.3855
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    }
+   ],
+   "dense_acc": 1.0,
+   "skip_acc": 1.0
+  },
+  "V2_local_motion": {
+   "dense_hits": 4,
+   "skip_hits": 4,
+   "n": 4,
+   "detail": [
+    {
+     "order": [
+      "a highway with moving traffic",
+      "an empty desert road"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -5.1419,
+      -5.898
+     ],
+     "lp_skip": [
+      -5.37,
+      -6.3588
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "an empty desert road",
+      "a highway with moving traffic"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -5.7749,
+      -4.9949
+     ],
+     "lp_skip": [
+      -6.26,
+      -5.4214
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a highway with moving traffic",
+      "a snowy mountain"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -5.1109,
+      -6.9473
+     ],
+     "lp_skip": [
+      -5.1943,
+      -7.3518
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a snowy mountain",
+      "a highway with moving traffic"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -7.0413,
+      -4.8076
+     ],
+     "lp_skip": [
+      -7.2129,
+      -4.905
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    }
+   ],
+   "dense_acc": 1.0,
+   "skip_acc": 1.0
+  },
+  "V3_fast_natural_object": {
+   "dense_hits": 4,
+   "skip_hits": 4,
+   "n": 4,
+   "detail": [
+    {
+     "order": [
+      "a news studio with a person talking",
+      "a football match"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -4.4478,
+      -9.2133
+     ],
+     "lp_skip": [
+      -4.4846,
+      -9.3009
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a football match",
+      "a news studio with a person talking"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -8.3558,
+      -4.4251
+     ],
+     "lp_skip": [
+      -7.8742,
+      -4.278
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a news studio with a person talking",
+      "a cooking show"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -4.5494,
+      -10.9934
+     ],
+     "lp_skip": [
+      -4.6586,
+      -11.148
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a cooking show",
+      "a news studio with a person talking"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -9.8106,
+      -4.5939
+     ],
+     "lp_skip": [
+      -9.7529,
+      -4.5857
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    }
+   ],
+   "dense_acc": 1.0,
+   "skip_acc": 1.0
+  },
+  "V4_camera_pan": {
+   "dense_hits": 4,
+   "skip_hits": 4,
+   "n": 4,
+   "detail": [
+    {
+     "order": [
+      "a small boat on the water near rocks",
+      "an airport runway"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -2.9359,
+      -8.9654
+     ],
+     "lp_skip": [
+      -2.9359,
+      -8.9654
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "an airport runway",
+      "a small boat on the water near rocks"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -8.7122,
+      -2.9207
+     ],
+     "lp_skip": [
+      -8.7122,
+      -2.9207
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a small boat on the water near rocks",
+      "a subway station"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -2.9507,
+      -8.0751
+     ],
+     "lp_skip": [
+      -2.9507,
+      -8.0751
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a subway station",
+      "a small boat on the water near rocks"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -8.4213,
+      -2.9263
+     ],
+     "lp_skip": [
+      -8.4213,
+      -2.9263
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    }
+   ],
+   "dense_acc": 1.0,
+   "skip_acc": 1.0
+  },
+  "V5_illumination_change": {
+   "dense_hits": 4,
+   "skip_hits": 4,
+   "n": 4,
+   "detail": [
+    {
+     "order": [
+      "a large cargo container ship at sea",
+      "a bicycle race"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -3.6789,
+      -8.6176
+     ],
+     "lp_skip": [
+      -3.4457,
+      -10.5416
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a bicycle race",
+      "a large cargo container ship at sea"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -9.7838,
+      -3.3111
+     ],
+     "lp_skip": [
+      -10.1316,
+      -3.2048
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a large cargo container ship at sea",
+      "a bakery interior"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -3.5438,
+      -7.382
+     ],
+     "lp_skip": [
+      -3.3863,
+      -8.0703
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a bakery interior",
+      "a large cargo container ship at sea"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -7.7334,
+      -3.4542
+     ],
+     "lp_skip": [
+      -6.6633,
+      -3.4322
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    }
+   ],
+   "dense_acc": 1.0,
+   "skip_acc": 1.0
+  },
+  "V6_multi_shot_cuts": {
+   "dense_hits": 4,
+   "skip_hits": 4,
+   "n": 4,
+   "detail": [
+    {
+     "order": [
+      "two news anchors sitting at a desk",
+      "a rock concert"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -3.3984,
+      -7.2889
+     ],
+     "lp_skip": [
+      -3.3984,
+      -7.2889
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a rock concert",
+      "two news anchors sitting at a desk"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -6.8148,
+      -3.0938
+     ],
+     "lp_skip": [
+      -6.8148,
+      -3.0938
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "two news anchors sitting at a desk",
+      "a hospital corridor"
+     ],
+     "win_dense": 0,
+     "win_skip": 0,
+     "lp_dense": [
+      -3.2665,
+      -9.0218
+     ],
+     "lp_skip": [
+      -3.2665,
+      -9.0218
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    },
+    {
+     "order": [
+      "a hospital corridor",
+      "two news anchors sitting at a desk"
+     ],
+     "win_dense": 1,
+     "win_skip": 1,
+     "lp_dense": [
+      -8.4221,
+      -3.0929
+     ],
+     "lp_skip": [
+      -8.4221,
+      -3.0929
+     ],
+     "hit_dense": true,
+     "hit_skip": true
+    }
+   ],
+   "dense_acc": 1.0,
+   "skip_acc": 1.0
+  }
+ }
+}

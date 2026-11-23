@@ -1,0 +1,133 @@
+{
+ "cases": [
+  {
+   "matrix": "down_proj",
+   "n_out": 2048,
+   "n_in": 7680,
+   "nb": 240,
+   "bytes_bf16": 31457280,
+   "bytes_iq4": 8847360,
+   "levels": [
+    {
+     "tau": 0.0,
+     "active": 1.0,
+     "bytes_read_bf16": 31457280,
+     "bytes_read_iq4": 8847360,
+     "torch_dense_bf16": 0.08742560386657715,
+     "torch_gather_bf16": 0.05908847808837891,
+     "triton_bf16_all": 0.05427311897277832,
+     "triton_bf16_sparse": 0.05421919822692871,
+     "triton_iq4_sparse": 0.11585871696472168,
+     "rel_err_bf16": 0.0,
+     "rel_err_iq4": 0.05210241675376892,
+     "rel_err_sparse": 0.0,
+     "sp_bf16_vs_dense": 1.6124473752021664,
+     "sp_iq4_vs_dense": 0.7545880548046958,
+     "gbps_bf16_sparse": 580.1871113685394,
+     "gbps_iq4_sparse": 76.3633521221711
+    },
+    {
+     "tau": 0.25,
+     "active": 0.7458333333333333,
+     "bytes_read_bf16": 23461888,
+     "bytes_read_iq4": 6598656,
+     "torch_dense_bf16": 0.08742575645446778,
+     "torch_gather_bf16": 0.058632640838623046,
+     "triton_bf16_all": 0.05439743995666504,
+     "triton_bf16_sparse": 0.04079919815063476,
+     "triton_iq4_sparse": 0.08693872451782227,
+     "rel_err_bf16": 0.0,
+     "rel_err_iq4": 0.05210241675376892,
+     "rel_err_sparse": 0.18658286333084106,
+     "sp_bf16_vs_dense": 2.1428302618027697,
+     "sp_iq4_vs_dense": 1.005602013824641,
+     "gbps_bf16_sparse": 575.0575762145211,
+     "gbps_iq4_sparse": 75.90007832064857
+    },
+    {
+     "tau": 0.5,
+     "active": 0.5,
+     "bytes_read_bf16": 15728640,
+     "bytes_read_iq4": 4423680,
+     "torch_dense_bf16": 0.08745344161987305,
+     "torch_gather_bf16": 0.05788159847259521,
+     "triton_bf16_all": 0.05444591999053955,
+     "triton_bf16_sparse": 0.027750720977783205,
+     "triton_iq4_sparse": 0.05857615947723389,
+     "rel_err_bf16": 0.0,
+     "rel_err_iq4": 0.05210241675376892,
+     "rel_err_sparse": 0.32897308468818665,
+     "sp_bf16_vs_dense": 3.15139349676309,
+     "sp_iq4_vs_dense": 1.4929869489627867,
+     "gbps_bf16_sparse": 566.783112143,
+     "gbps_iq4_sparse": 75.52014402240385
+    }
+   ]
+  },
+  {
+   "matrix": "out_proj",
+   "n_out": 2048,
+   "n_in": 2048,
+   "nb": 64,
+   "bytes_bf16": 8388608,
+   "bytes_iq4": 2359296,
+   "levels": [
+    {
+     "tau": 0.0,
+     "active": 1.0,
+     "bytes_read_bf16": 8388608,
+     "bytes_read_iq4": 2359296,
+     "torch_dense_bf16": 0.02423520088195801,
+     "torch_gather_bf16": 0.009430559873580933,
+     "triton_bf16_all": 0.015263040065765381,
+     "triton_bf16_sparse": 0.015177439451217651,
+     "triton_iq4_sparse": 0.03160351991653442,
+     "rel_err_bf16": 6.505563310277296e-10,
+     "rel_err_iq4": 0.08952494710683823,
+     "rel_err_sparse": 6.505563310277296e-10,
+     "sp_bf16_vs_dense": 1.59679114252791,
+     "sp_iq4_vs_dense": 0.7668513173837502,
+     "gbps_bf16_sparse": 552.702452015185,
+     "gbps_iq4_sparse": 74.6529502482936
+    },
+    {
+     "tau": 0.25,
+     "active": 0.75,
+     "bytes_read_bf16": 6291456,
+     "bytes_read_iq4": 1769472,
+     "torch_dense_bf16": 0.024282560348510743,
+     "torch_gather_bf16": 0.009300479888916016,
+     "triton_bf16_all": 0.015242400169372559,
+     "triton_bf16_sparse": 0.011671839952468873,
+     "triton_iq4_sparse": 0.023932480812072755,
+     "rel_err_bf16": 6.505563310277296e-10,
+     "rel_err_iq4": 0.08952494710683823,
+     "rel_err_sparse": 0.26974907517433167,
+     "sp_bf16_vs_dense": 2.0804397976151483,
+     "sp_iq4_vs_dense": 1.014627799733214,
+     "gbps_bf16_sparse": 539.0286386397208,
+     "gbps_iq4_sparse": 73.93600412320768
+    },
+    {
+     "tau": 0.5,
+     "active": 0.5,
+     "bytes_read_bf16": 4194304,
+     "bytes_read_iq4": 1179648,
+     "torch_dense_bf16": 0.0242142391204834,
+     "torch_gather_bf16": 0.009473119974136352,
+     "triton_bf16_all": 0.015217119455337524,
+     "triton_bf16_sparse": 0.008051199913024902,
+     "triton_iq4_sparse": 0.016157920360565185,
+     "rel_err_bf16": 6.505563310277296e-10,
+     "rel_err_iq4": 0.08952494710683823,
+     "rel_err_sparse": 0.4755309224128723,
+     "sp_bf16_vs_dense": 3.0075317197515608,
+     "sp_iq4_vs_dense": 1.498598741678438,
+     "gbps_bf16_sparse": 520.9539006992767,
+     "gbps_iq4_sparse": 73.00741516705541
+    }
+   ]
+  }
+ ],
+ "device": "NVIDIA GeForce RTX 5070 Laptop GPU"
+}

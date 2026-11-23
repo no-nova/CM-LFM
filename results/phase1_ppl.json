@@ -1,0 +1,34 @@
+{
+ "tokens_total": 294512,
+ "P1_sliding_1024_512": {
+  "ppl": 68.61037252543633,
+  "nll_sum": 1244849.6045779686,
+  "tokens": 294399,
+  "bits_per_token": 6.1003547946060355,
+  "tokens_total": 294512,
+  "window": 1024,
+  "stride": 512,
+  "seconds": 62.82
+ },
+ "P2_continuous_16k": {
+  "ppl": 63.835835227146575,
+  "tokens": 16096,
+  "nll_mean": 4.156314713343474,
+  "bits_per_token": 5.996294625314464
+ },
+ "P3_chat_conditioned": {
+  "ppl": 42.67740493080477,
+  "tokens": 7296,
+  "bits_per_token": 5.415400548292363
+ },
+ "restart_penalty_nll_by_position": {
+  "pos0_31": 7.6409,
+  "pos32_255": 5.4867,
+  "pos256_511": 4.5719
+ },
+ "mem_peak_mb": {
+  "anon": 1320,
+  "file": 3929,
+  "rss": 4758
+ }
+}

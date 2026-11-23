@@ -1,0 +1,34 @@
+{
+ "ffn_iso_relL2": 3.0625250246885116e-07,
+ "ffn_identity_control_maxabs": 0.0,
+ "ffn_negative_control_relL2": 1.2647552490234375,
+ "ffn_out_scale": 0.00743032107129693,
+ "ffn_iso_pass": true,
+ "conv_iso_relL2": 3.393247993699333e-07,
+ "conv_identity_control_maxabs": 0.0,
+ "conv_negative_control_relL2": 1.3720747232437134,
+ "conv_out_scale": 1.636326669540722e-05,
+ "conv_iso_pass": true,
+ "retained_energy_min": 0.7956,
+ "retained_energy_min_at": "ffn:native:topk:tau=0.5",
+ "retained_energy_failures": [],
+ "retained_energy_pass": true,
+ "scene_cut_maxabs": 0.0,
+ "scene_cut_max_kl": 0.0,
+ "flush_clips": [
+  "V1_static_surveillance",
+  "V2_local_motion",
+  "V3_fast_natural_object",
+  "V4_camera_pan",
+  "V5_illumination_change",
+  "V6_multi_shot_cuts"
+ ],
+ "fully_flushed_clips": [
+  "V4_camera_pan",
+  "V6_multi_shot_cuts"
+ ],
+ "scene_cut_pass": true,
+ "peak_rss_anon_mb": 409.8,
+ "rss_pass": true,
+ "all_pass": true
+}

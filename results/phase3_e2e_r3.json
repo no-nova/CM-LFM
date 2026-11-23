@@ -1,0 +1,74 @@
+{
+ "threads": 16,
+ "layers": 24,
+ "conv_layers": 13,
+ "attn_layers": 11,
+ "method": "exclusive operator cost by module ablation (Identity swap)",
+ "decode_ms_per_token_dense": 105.07,
+ "components_ms": {
+  "ffn_all": 73.11,
+  "conv_all": 18.53,
+  "attn_all": 12.78,
+  "lm_head": 14.44
+ },
+ "components_pct": {
+  "ffn": 69.6,
+  "conv": 17.6,
+  "attn": 12.2,
+  "lm_head": 13.7,
+  "other": 1.1
+ },
+ "gemm_dense_ms": 118.86,
+ "other_ms": 1.12,
+ "ablation_overlap_ms": 14.91,
+ "other_pct": 1.1,
+ "kernel_times_ms": {
+  "ffn": {
+   "bf16": 2.0309,
+   "iq4": 0.7861
+  },
+  "conv": {
+   "bf16": 0.6734,
+   "iq4": 0.1655
+  },
+  "q": {
+   "bf16": 0.2313,
+   "iq4": 0.1129
+  },
+  "k": {
+   "bf16": 0.0633,
+   "iq4": 0.0272
+  },
+  "v": {
+   "bf16": 0.0566,
+   "iq4": 0.0282
+  },
+  "o": {
+   "bf16": 0.2315,
+   "iq4": 0.1027
+  },
+  "lm": {
+   "bf16": 14.5098,
+   "iq4": 6.5765
+  }
+ },
+ "kernel_ratio": {
+  "ffn": 0.387,
+  "conv": 0.246,
+  "gqa": 0.465,
+  "lm": 0.453
+ },
+ "composed_iq4_gemm_ms": 30.58,
+ "e2e_conservative_ms": 46.46,
+ "e2e_conservative_speedup": 2.26,
+ "e2e_composed_ms": 31.7,
+ "e2e_composed_speedup": 3.31,
+ "weight_bytes_dense_MB": 3658.6,
+ "weight_bytes_iq4_skip_MB": 1130.0,
+ "rss": {
+  "VmRSS": 4119.8,
+  "RssAnon": 497.2,
+  "RssFile": 3622.6
+ },
+ "other_note": "norms, rope, softmax, depthwise conv1d, cache updates, embedding, dispatch"
+}

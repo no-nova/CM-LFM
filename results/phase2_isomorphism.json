@@ -1,0 +1,44 @@
+{
+ "operator_level": {
+  "ffn_float64": {
+   "max_abs": 2.6867397195928788e-14,
+   "rel_l2": 3.7047431159459505e-15
+  },
+  "ffn_float32": {
+   "max_abs": 1.5497207641601562e-06,
+   "rel_l2": 3.765208873574011e-07
+  },
+  "conv_float64": {
+   "max_abs": 1.2212453270876722e-15,
+   "rel_l2": 1.9328045863156426e-15,
+   "negative_control_max_abs": 0.5794803173582674
+  },
+  "conv_float32": {
+   "max_abs": 1.4156103134155273e-07,
+   "rel_l2": 3.4784926583597553e-07,
+   "negative_control_max_abs": 0.5329216718673706
+  }
+ },
+ "whole_model_bf16": {
+  "n_conv_layers": 13,
+  "n_ffn_layers": 24,
+  "seq_len": 128,
+  "pi_ffn_all": {
+   "max_abs": 1.125,
+   "rmse": 0.09763355553150177,
+   "top1_agree": 0.90625
+  },
+  "pi_conv_all": {
+   "max_abs": 0.90625,
+   "rmse": 0.09842412173748016,
+   "top1_agree": 0.9453125
+  },
+  "undo_after_conv_max_abs": 0.0,
+  "pi_ffn_and_conv": {
+   "max_abs": 1.203125,
+   "rmse": 0.10392923653125763,
+   "top1_agree": 0.9375
+  },
+  "cuda_peak_gb": 3.842
+ }
+}

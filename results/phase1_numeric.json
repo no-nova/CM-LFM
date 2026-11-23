@@ -1,0 +1,7 @@
+{
+ "rmse": 0.07922010868787766,
+ "max_abs": 0.953125,
+ "top1_agreement": 0.958984375,
+ "seq_len": 512,
+ "note": "same bf16 weights, different attention kernel path (bf16 SDPA vs eager matmul+softmax fp32)"
+}

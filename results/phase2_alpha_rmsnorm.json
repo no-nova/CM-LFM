@@ -1,0 +1,28 @@
+{
+ "ffn": {
+  "n_tokens": 7,
+  "retained_energy": 0.8777735829353333,
+  "post_norm": "post_ffn_norm",
+  "rel_alpha1.25_pre_norm": 0.32391035556793213,
+  "rel_alpha1.25_post_norm": 0.011640184558928013,
+  "rel_alpha1.25_vs_dense_post_norm": 0.6318320035934448,
+  "rel_alpha1.5_pre_norm": 0.5882003903388977,
+  "rel_alpha1.5_post_norm": 0.01571403630077839,
+  "rel_alpha1.5_vs_dense_post_norm": 0.6337268948554993,
+  "rel_masked_vs_dense_pre_norm": 0.6062601208686829,
+  "rel_masked_vs_dense_post_norm": 0.6265898942947388
+ },
+ "conv": {
+  "n_tokens": 7,
+  "retained_energy": 0.9903770685195923,
+  "post_norm": "post_operator_norm",
+  "rel_alpha1.25_pre_norm": 0.2556310296058655,
+  "rel_alpha1.25_post_norm": 0.18905925750732422,
+  "rel_alpha1.25_vs_dense_post_norm": 0.6617060899734497,
+  "rel_alpha1.5_pre_norm": 0.5067514181137085,
+  "rel_alpha1.5_post_norm": 0.35027027130126953,
+  "rel_alpha1.5_vs_dense_post_norm": 0.6865952014923096,
+  "rel_masked_vs_dense_pre_norm": 0.611101508140564,
+  "rel_masked_vs_dense_post_norm": 0.6571180820465088
+ }
+}
